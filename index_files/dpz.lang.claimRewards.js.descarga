@@ -1,0 +1,135 @@
+define([], function anonymous(
+) {
+var pluralFuncs = {
+  es: function(n, ord) {
+    if (ord) return 'other';
+    return (n == 1) ? 'one' : 'other';
+  }
+};
+var fmt = {};
+var number = function(value, offset) {
+  if (isNaN(value)) throw new Error("'" + value + "' isn't a number.");
+  return value - (offset || 0);
+};
+var plural = function(value, offset, lcfunc, data, isOrdinal) {
+  if ({}.hasOwnProperty.call(data, value)) return data[value]();
+  if (offset) value -= offset;
+  var key = lcfunc(value, isOrdinal);
+  if (key in data) return data[key]();
+  return data.other();
+};
+var select = function(value, data) {
+  if ({}.hasOwnProperty.call(data, value)) return data[value]();
+  return data.other()
+};
+
+return {
+  "claimRewards.activate_rewards": function(d) { return "Activa Las Recompensas"; },
+  "claimRewards.activate_rewards_existing_profile": function(d) { return "Ya tienes un Pizza Profile pero no estás inscrito en Piece of the Pie Rewards&trade;. ¡Para reclamar puntos no olvides Activar las Recompensas a continuación con un solo clic!"; },
+  "claimRewards.activate_rewards_legal": function(d) { return "Al activar tu cuenta, te comprometes con cumplir con los <a href=\"" + "#" + "\" class=\"underline\" data-hook=\"show-terms\">términos y condiciones</a> de Piece of the Pie Rewards&trade;."; },
+  "claimRewards.activate_rewards_new_profile": function(d) { return "Has creado un Pizza Profile pero no te has inscrito en Piece of the Pie Rewards&trade;. Si no lo activas ahora, tus puntos no serán reclamados."; },
+  "claimRewards.almost_there": function(d) { return "Ya casi terminas."; },
+  "claimRewards.back": function(d) { return "Regresar"; },
+  "claimRewards.bonus_activation_activate": function(d) { return "ACTIVA"; },
+  "claimRewards.bonus_activation_already_activated_header": function(d) { return "TU OFERTA YA HA SIDO ACTIVADA"; },
+  "claimRewards.bonus_activation_customer_not_part_of_campaign": function(d) { return "NO ERES ELEGIBLE PARA ESTA OFERTA"; },
+  "claimRewards.bonus_activation_details": function(d) { return "POR FAVOR, INGRESA LA DIRECCIÓN DE CORREO ELECTRÓNICO ASOCIADA CON TU CUENTA DE REWARDS PARA ACTIVAR ESTA OFERTA."; },
+  "claimRewards.bonus_activation_email_placeholder": function(d) { return "(SE REQUIERE DIRECCIÓN DE CORREO ELECTRÓNICO)"; },
+  "claimRewards.bonus_activation_expired": function(d) { return "ESTA OFERTA HA EXPIRADO"; },
+  "claimRewards.bonus_activation_expired_message": function(d) { return "POR FAVOR, <a href=\"javascript: window.location.reload()\" class=\"page-link\">HAZ CLIC AQUÍ</a> PARA INTENTARLO DE NUEVO."; },
+  "claimRewards.bonus_activation_extra_info": function(d) { return "DEBES SER MIEMBRO DE REWARDS Y HACER UN PEDIDO QUE CALIFIQUE USANDO LA DIRECCIÓN DE CORREO ELECTRÓNICO ASOCIADA A TU CUENTA DE PIECE OF THE PIE REWARDS PARA RECIBIR LA OFERTA. VISITA <a href=\"" + "#" + "!/customer/rewards/\" class=\"page-link\">DOMINOS.COM/REWARDS</a> PARA MÁS INFORMACIÓN SOBRE EL PROGRAMA."; },
+  "claimRewards.bonus_activation_generic_header": function(d) { return "ALGO HA OCURRIDO"; },
+  "claimRewards.bonus_activation_great_news": function(d) { return "¡MUY BUENAS NOTICIAS!"; },
+  "claimRewards.bonus_activation_header1": function(d) { return "¡YA CASI TERMINAS!"; },
+  "claimRewards.bonus_activation_header2": function(d) { return "ACTIVA TU OFERTA ABAJO"; },
+  "claimRewards.bonus_activation_internal_processing_error": function(d) { return "ESTAMOS TENIENDO DIFICULTADES AL ACTIVAR ESTA OFERTA"; },
+  "claimRewards.bonus_activation_internal_processing_message": function(d) { return "POR FAVOR, INTÉNTALO DE NUEVO MÁS TARDE O CONTACTA AL DEPARTAMENTO DE SERVICIO AL CLIENTE SI TIENES ALGÚN OTRO PROBLEMA."; },
+  "claimRewards.bonus_activation_oops": function(d) { return "¡UY!"; },
+  "claimRewards.bonus_activation_order_now": function(d) { return "PIDE YA"; },
+  "claimRewards.bonus_activation_other_deals": function(d) { return "ENCUENTRA OTRAS GRANDES OFERTAS <a href=\"/en/pages/order/" + "#" + "!/section/Coupons/category/All/\" class=\"page-link\">AQUÍ</a>."; },
+  "claimRewards.bonus_activation_rewards_history": function(d) { return "CONSULTA TU <a href=\"" + "#" + "!/customer/rewards/history/\" class=\"page-link\">HISTORIAL DE REWARDS</a>"; },
+  "claimRewards.bonus_activation_sorry": function(d) { return "¡LO SENTIMOS!"; },
+  "claimRewards.bonus_activation_success": function(d) { return "¡LO LOGRASTE!"; },
+  "claimRewards.bonus_activation_success_header": function(d) { return "TU OFERTA HA SIDO ACTIVADA"; },
+  "claimRewards.bonus_activation_success_not_a_member": function(d) { return "¿NO ERES MIEMBRO AÚN?<br><a href=\"" + "#" + "!/customer/profile/new\" class=\"page-link\">HAZ CLIC AQUÍ</a> PARA CREAR UN PIZZA PROFILE CON LA DIRECCIÓN DE CORREO ELECTRÓNICO QUE USASTE PARA ACTIVAR ESTA OFERTA."; },
+  "claimRewards.box_label_1": function(d) { return "Etiqueta de la caja 1"; },
+  "claimRewards.box_label_2": function(d) { return "Etiqueta de la caja 2"; },
+  "claimRewards.box_label_3": function(d) { return "Etiqueta de la caja 3"; },
+  "claimRewards.claim_info_box_label": function(d) { return "Hay dos tipos de etiquetas de las cajas. Mira abajo para decidir cuál de ellas tienes."; },
+  "claimRewards.claim_info_disclaimer": function(d) { return "Las etiquetas de las cajas y los recibos solo están disponibles en las tiendas participantes en el área de Detroit Metro."; },
+  "claimRewards.claim_info_email": function(d) { return "Haz clic en &quot;Reclamar Las Recompensas&quot; para alcanzar la página pre-programada de Reclama Tus Recompensas."; },
+  "claimRewards.claim_info_receipt": function(d) { return "Hay dos tipos de recibos de los pedidos. Mira abajo para decidir cuál de ellos tienes."; },
+  "claimRewards.claim_now": function(d) { return "Reclama ahora"; },
+  "claimRewards.claim_points": function(d) { return "reclama puntos"; },
+  "claimRewards.claim_rewards": function(d) { return "reclamar las recompensas"; },
+  "claimRewards.claim_your_rewards": function(d) { return "Reclama Tus Recompensas"; },
+  "claimRewards.confirmation_banner_header": function(d) { return "Esta orden todavía podría obtener puntos para una <span>PIZZA GRATIS</span>."; },
+  "claimRewards.confirmation_banner_subheader": function(d) { return "¡Reclama tus puntos ahora!"; },
+  "claimRewards.confirmation_cta_order_online": function(d) { return "ordena online"; },
+  "claimRewards.confirmation_cta_view_profile": function(d) { return "Ver Pizza Profile y Recompensas"; },
+  "claimRewards.confirmation_cta_view_tracker": function(d) { return "Ver Tracker"; },
+  "claimRewards.confirmation_disclaimer": function(d) { return "Los puntos obtenidos están disponibles para usar aproximadamente 48 horas después de ordenar."; },
+  "claimRewards.confirmation_email": function(d) { return "Email de confirmación"; },
+  "claimRewards.confirmation_header": function(d) { return "¡Felicidades!"; },
+  "claimRewards.confirmation_note_orders_must_be_ten_or_more": function(d) { return "Nota: Las órdenes deben de ser de $10 o más para obtener puntos."; },
+  "claimRewards.confirmation_points_claimed": function(d) { return "Reclamaste " + d.points + " puntos de recompensa"; },
+  "claimRewards.confirmation_popup_free_pizza": function(d) { return "pizza gratis"; },
+  "claimRewards.confirmation_popup_header": function(d) { return "Esta orden todavía podría obtener puntos hacia"; },
+  "claimRewards.confirmation_popup_subheader": function(d) { return "¡Reclama tus puntos ahora!"; },
+  "claimRewards.confirmation_still_earn_points": function(d) { return "Todavía puedes obtener puntos por tu orden y juntar para una pizza gratis. Reclama tus puntos ahora."; },
+  "claimRewards.confirmation_subheader": function(d) { return "¡Reclamaste tus puntos exitosamente!"; },
+  "claimRewards.contact_us": function(d) { return "Contáctenos"; },
+  "claimRewards.create_profile_benefits": function(d) { return "Crea un Pizza Profile para inscribirte en Piece of the Pie Rewards<sup>&reg;</sup> y reclamar tus puntos. <br> Un Pizza Profile también te da acceso a estas ventajas increíbles:"; },
+  "claimRewards.create_your_profile": function(d) { return "Crea un perfil y reclama puntos"; },
+  "claimRewards.customer_claim_attempts_error": function(d) { return "Lo siento. Parece que has introducido la información incorrecta demasiadas veces. Inténtalo de nuevo en 24 horas."; },
+  "claimRewards.customer_monthly_claim_error": function(d) { return "Oops. En un período de 30 días, solo se puede obtener puntos de un (1) pedido pasado."; },
+  "claimRewards.customer_not_enrolled_error": function(d) { return "Para reclamar puntos, primero activa Piece of the Pie Rewards<sup>&reg;</sup>. Selecciona &quot;Activar Las Recompensas&quot; y vuelve a enviar."; },
+  "claimRewards.deny_activate_rewards_existing_profile": function(d) { return "No gracias, no deseo reclamar mis puntos."; },
+  "claimRewards.deny_activate_rewards_new_profile": function(d) { return "No gracias, deseo crear mi perfil sin reclamar puntos."; },
+  "claimRewards.details_claim_points_anonymous": function(d) { return ": Puedes reclamar puntos por cualquier orden que califique, hecha en los últimos 30 días que no ha dado puntos."; },
+  "claimRewards.details_claim_points_profiled": function(d) { return ": Puedes reclamar puntos por cualquier orden que califique, hecha en los últimos 30 días que no ha dado puntos."; },
+  "claimRewards.digital_order_not_found_error": function(d) { return "DISCULPA, NO PUEDES RECLAMAR TUS PUNTOS EN ESTOS MOMENTOS. NO TE PREOCUPES, TODAVÍA PUEDES HACERLOS VÁLIDOS USANDO EL ENLACE QUE VIENE EN TU CORREO ELECTRÓNICO CON LA CONFIRMACIÓN DE TU ORDEN. INTENTA DE NUEVO MAÑANA."; },
+  "claimRewards.enter_info_recent_order": function(d) { return "Ingresa tu información de pedido reciente para reclamar puntos."; },
+  "claimRewards.example_box_label_1": function(d) { return "Caja de ejemplo etiqueta 1"; },
+  "claimRewards.example_box_label_2": function(d) { return "Caja de ejemplo etiqueta 2"; },
+  "claimRewards.example_box_label_3": function(d) { return "Caja de ejemplo etiqueta 3"; },
+  "claimRewards.example_confirmation_email": function(d) { return "Ejemplo de correo electrónico de confirmación"; },
+  "claimRewards.example_receipt_1": function(d) { return "Ejemplo de recibo 1"; },
+  "claimRewards.example_receipt_2": function(d) { return "Ejemplo de recibo 2"; },
+  "claimRewards.faq_link": function(d) { return "Visita la sección de <a class=\"underline\" target=\"_blank\" href=\"" + d.ctx + "/pages/content/customer-service/faq?faqsection=rewards\">Preguntas Frecuentes</a> sobre las recompensas"; },
+  "claimRewards.find_this_info_details": function(d) { return "Encuentra esta información en tu <strong>etiqueta de la caja</strong> o <strong>recibo de pago</strong>."; },
+  "claimRewards.got_it": function(d) { return "Entendido!"; },
+  "claimRewards.guest_loyalty_icon": function(d) { return "Icono de lealtad de invitado"; },
+  "claimRewards.guest_profile_icon": function(d) { return "Icono de perfil de invitado"; },
+  "claimRewards.locate_order_details": function(d) { return "Localiza los detalles de la orden"; },
+  "claimRewards.not_qualified": function(d) { return "¡Ay no! Este pedido no califica para obtener puntos de recompensa, tal vez 1) El precio total fue menor del mínimo de $10 antes de la propina, o 2) ya reclamaste puntos en los últimos 30 días."; },
+  "claimRewards.or": function(d) { return "O"; },
+  "claimRewards.order_claimed_error": function(d) { return "Lo siento. Los puntos para este pedido ya fueron reclamados."; },
+  "claimRewards.order_details": function(d) { return "Detalles de la Orden"; },
+  "claimRewards.order_expired_error": function(d) { return "Oops. Este pedido no califica porque fue realizado hace más de 30 días."; },
+  "claimRewards.order_not_found_error": function(d) { return "No encontramos tu número de orden o Rewards Code. Asegúrate de escribir el Rewards Code correctamente. Los códigos pueden tener una combinación de letras minúsculas y mayúsculas."; },
+  "claimRewards.order_number": function(d) { return "Número de la Orden"; },
+  "claimRewards.order_receipt_1": function(d) { return "Recibo de la Orden 1"; },
+  "claimRewards.order_receipt_2": function(d) { return "Recibo de la Orden 2"; },
+  "claimRewards.points_not_claimed": function(d) { return "¡Ay no! Tus puntos aún no han sido reclamados."; },
+  "claimRewards.profile_required_already_have_profile": function(d) { return "¿Ya tienes un Pizza Profile? Ingresa para verificar si tienes puntos disponibles."; },
+  "claimRewards.profile_required_claim_your_points": function(d) { return "Reclama tus puntos"; },
+  "claimRewards.profile_required_create_profile": function(d) { return "Crea un perfil para inscribirte"; },
+  "claimRewards.profile_required_header": function(d) { return "Inscríbete en Piece of the Pie Rewards"; },
+  "claimRewards.profile_required_header_enroll": function(d) { return "Inscríbete en"; },
+  "claimRewards.profile_required_header_pop": function(d) { return "Piece Of The Pie"; },
+  "claimRewards.profile_required_header_rewards": function(d) { return "Rewards"; },
+  "claimRewards.profile_required_subheader": function(d) { return "Para reclamar puntos, inscríbete en Piece of the Pie Rewards&trade; mediante la creación de un Pizza Profile"; },
+  "claimRewards.profile_required_terms": function(d) { return "Al hacer clic, indicas que deseas inscribirte en Piece of the Pie Rewards&trade; de Domino’s, y que aceptas los <a href=\"\" data-hook=\"potpr-toc\" class=\"js-loyaltyTermsBody underline\">términos y condiciones</a> del programa."; },
+  "claimRewards.questions": function(d) { return "¿Preguntas?"; },
+  "claimRewards.rewards_code": function(d) { return "Código de Recompensa"; },
+  "claimRewards.rewards_home": function(d) { return "Página Principal de Recompensas"; },
+  "claimRewards.show_me": function(d) { return "Muéstrame"; },
+  "claimRewards.sign_in": function(d) { return "Ingresar"; },
+  "claimRewards.sign_in_to_claim_rewards": function(d) { return "Se te solicitará ingresar o crear un Pizza Profile para reclamar puntos."; },
+  "claimRewards.sign_in_to_your_pizza": function(d) { return "Ingresa a tu Pizza Profile para reclamar puntos"; },
+  "claimRewards.to_qualify": function(d) { return "Para calificar, la orden debe ser de $10 o más para obtener puntos. La orden no puede haber obtenido puntos anteriormente. Solo se pueden reclamar puntos de 1 orden reciente por mes y solo se pueden reclamar puntos de 1 orden cada 24 horas. Las órdenes que no han sido reclamadas deben tener menos de 30 días para calificar."; },
+  "claimRewards.unknown_error": function(d) { return "Parece que se ha producido un error desconocido. Inténtalo de nuevo más tarde."; }
+}
+}
+);

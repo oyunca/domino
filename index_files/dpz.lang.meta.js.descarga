@@ -1,0 +1,43 @@
+define([], function anonymous(
+) {
+var pluralFuncs = {
+  es: function(n, ord) {
+    if (ord) return 'other';
+    return (n == 1) ? 'one' : 'other';
+  }
+};
+var fmt = {};
+var number = function(value, offset) {
+  if (isNaN(value)) throw new Error("'" + value + "' isn't a number.");
+  return value - (offset || 0);
+};
+var plural = function(value, offset, lcfunc, data, isOrdinal) {
+  if ({}.hasOwnProperty.call(data, value)) return data[value]();
+  if (offset) value -= offset;
+  var key = lcfunc(value, isOrdinal);
+  if (key in data) return data[key]();
+  return data.other();
+};
+var select = function(value, data) {
+  if ({}.hasOwnProperty.call(data, value)) return data[value]();
+  return data.other()
+};
+
+return {
+  "meta.are_you_constantly_thinking": function(d) { return ""; },
+  "meta.are_you_looking_for_coupons": function(d) { return ""; },
+  "meta.are_you_looking_for_dominos": function(d) { return ""; },
+  "meta.browse_coupons_order_dominos_online": function(d) { return "Explora ofertas & Ordena Domino's por internet a domicilio o para llevar. Menu con nuestras especialidades en pizza, pasta, alitas, cheesy bread, sandwiches, postres, papas &  bebidas"; },
+  "meta.did_you_know": function(d) { return ""; },
+  "meta.dominos_pizza_lets_you_browse": function(d) { return "Domino's Pizza te permite explorar ofertas y ordenar en línea - prueba nuestra nueva masa Pan Pizza con dos capas de queso 100% mozzarella de Nueva Zelanda y provolone importado."; },
+  "meta.dominos_pizza_profile_dominos_dominos": function(d) { return "perfil dominos, dominos, domino's pizza, dominos pizza, domino, dominoes, domin, domi, dominoes pizza, ordenar pizza online, Pizza domicilio, pizza tracker, rastrear pizza a domicilio, pizza a domicilio online, dominos tracker, pizza tracker, pizza domicilio tracker, dominos tracker domicilio."; },
+  "meta.have_you_ever_checked_out": function(d) { return ""; },
+  "meta.in_less_than_30_seconds": function(d) { return "En menos de 30 segundos, ordena Domino's Pizza por internet para recoger o a domicilio con tu Perfil Domino's, hace más fácil rápido ordenar pizza online."; },
+  "meta.over_5_000_dominos_locations": function(d) { return "30 sucursales Domino's. Automáticamente encuentra tu tienda más cercana para recoger o domicilio."; },
+  "meta.pizza_dominos_pizza_delivery_pizza": function(d) { return "pizza, domino's, pizza a domicilio, pizza domicilio, pizza online, pizza por internet, pizza en linea, ordena pizza online, ordenar pizza"; },
+  "meta.pizza_pizzas_a_pizza_new": function(d) { return "pizza, pizzas, una pizza, nueva pizza, nueva masa, pizza delivery, pizza a domicilio, pizza menu, ofertas pizza, ordena pizza online, dominos, domino's pizza, dominos pizza, domino, dominoes, domin, domi, dominoes pizza, dominos pizza menu, dominos ofertas, B.B.Q, bbq, bar b que, bar que, barbecue, barbque, mango habanero, inspired chicken, nuevo pollo, chicken chunks, alitas de pollo"; },
+  "meta.pizza_places_pizza_places_near": function(d) { return "pizzerias, pizzerias cerca de mi, ordenar comida online, dominos delivery"; },
+  "meta.track_every_step_of_your": function(d) { return "Rastrea cada paso de tu orden en Domino's, hasta tu puerta."; }
+}
+}
+);

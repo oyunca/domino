@@ -1,0 +1,90 @@
+define([], function anonymous(
+) {
+var pluralFuncs = {
+  es: function(n, ord) {
+    if (ord) return 'other';
+    return (n == 1) ? 'one' : 'other';
+  }
+};
+var fmt = {};
+var number = function(value, offset) {
+  if (isNaN(value)) throw new Error("'" + value + "' isn't a number.");
+  return value - (offset || 0);
+};
+var plural = function(value, offset, lcfunc, data, isOrdinal) {
+  if ({}.hasOwnProperty.call(data, value)) return data[value]();
+  if (offset) value -= offset;
+  var key = lcfunc(value, isOrdinal);
+  if (key in data) return data[key]();
+  return data.other();
+};
+var select = function(value, data) {
+  if ({}.hasOwnProperty.call(data, value)) return data[value]();
+  return data.other()
+};
+
+return {
+  "loyaltyOffer.banner_title": function(d) { return "Crea tu pizza profile para suscribirte"; },
+  "loyaltyOffer.button_close": function(d) { return "Después"; },
+  "loyaltyOffer.button_create_profile": function(d) { return "Crear mi perfil y suscribirme"; },
+  "loyaltyOffer.button_order": function(d) { return "Pide ya"; },
+  "loyaltyOffer.confirmation_popup_banner_title": function(d) { return "Bienvenido a"; },
+  "loyaltyOffer.confirmation_popup_no_offer_body_1": function(d) { return "Pide ya para empezar a ganar puntos para una"; },
+  "loyaltyOffer.confirmation_popup_no_offer_body_2": function(d) { return "."; },
+  "loyaltyOffer.confirmation_popup_no_offer_title": function(d) { return "Tu perfil ha sido creado con éxito."; },
+  "loyaltyOffer.confirmation_popup_offer_body_1": function(d) { return "Pide ahora y automáticamente aplica tu"; },
+  "loyaltyOffer.confirmation_popup_offer_body_2": function(d) { return "O regresa después y usa el código de cupón enviado a tu email."; },
+  "loyaltyOffer.confirmation_popup_offer_title": function(d) { return "Cupón de descuento del"; },
+  "loyaltyOffer.disclaimer_1": function(d) { return "Al inscribirte, aceptas cumplir con los "; },
+  "loyaltyOffer.disclaimer_2": function(d) { return " del Piece of the Pie Rewards®, al igual que con nuestros "; },
+  "loyaltyOffer.disclaimer_3": function(d) { return " y certificas que tienes al menos 13 años de edad."; },
+  "loyaltyOffer.disclaimer_4": function(d) { return "*Solo un pedido por día de $10 o más (no incluye propina o donaciones) puede ganar puntos."; },
+  "loyaltyOffer.disclaimer_5": function(d) { return "Para recibir este descuento debes suscribirte a Piece of the Pie Rewards® con la dirección de email en donde recibiste esta oferta, desde hoy hasta el 6 de octubre de 2019. La oferta estará disponible después de que se haya creado un Pizza Profile y la oferta haya sido enviada a tu email. La oferta es válida para un solo uso desde ahora hasta el 3 de noviembre de 2019 y solo se aplica a productos con precio del menú pedidos online. Los precios, la participación y los cargos pueden variar."; },
+  "loyaltyOffer.disclaimer_profile_1": function(d) { return "Al crear un perfil, aceptas nuestros "; },
+  "loyaltyOffer.disclaimer_profile_2": function(d) { return " y certificas que tienes al menos 13 años de edad."; },
+  "loyaltyOffer.disclaimer_t2e": function(d) { return "Debes de suscribirte a Piece of the Pie Rewards® antes del 24 de noviembre de 2019 para recibir el descuento de esta oferta. La oferta estará disponible y será enviada a tu correo electrónico después de que hayas creado tu Pizza Profile y te hayas suscrito a Piece of the Pie Rewards®. La oferta es válida para un solo uso desde ahora hasta el 22 de diciembre de 2019 y solo se aplica a productos a precio del menú pedidos online EN TIENDAS SELECTAS. Los precios, la participación, el área de entrega y los cargos pueden variar. Límite de una oferta por cliente."; },
+  "loyaltyOffer.disclaimer_terms_and_conditions": function(d) { return "Términos y Condiciones"; },
+  "loyaltyOffer.disclaimer_terms_of_use": function(d) { return "Términos de Uso"; },
+  "loyaltyOffer.enroll_in_piece_of_the_pie": function(d) { return ""; },
+  "loyaltyOffer.enroll_in_piece_of_the_pie_description_1": function(d) { return "Al hacer clic, indicas que deseas inscribirte en Piece of the Pie Rewards&trade; de Domino’s, y que aceptas los "; },
+  "loyaltyOffer.enroll_in_piece_of_the_pie_description_2": function(d) { return " del programa."; },
+  "loyaltyOffer.feature_1_title": function(d) { return "Pizza Gratis"; },
+  "loyaltyOffer.feature_2_body_1": function(d) { return "Acceso al historial de pedidos"; },
+  "loyaltyOffer.feature_2_body_2": function(d) { return "e información guardada."; },
+  "loyaltyOffer.feature_2_title": function(d) { return "PAGO MÁS RÁPIDO"; },
+  "loyaltyOffer.feature_3_body_1": function(d) { return "Ofertas y promociones solo"; },
+  "loyaltyOffer.feature_3_body_2": function(d) { return "para miembros."; },
+  "loyaltyOffer.feature_3_title": function(d) { return "Ofertas Exclusivas"; },
+  "loyaltyOffer.form_email": function(d) { return "Correo electrónico:"; },
+  "loyaltyOffer.form_email_annotation": function(d) { return "Por favor ingresa la dirección de email en donde recibiste esta oferta."; },
+  "loyaltyOffer.form_email_confirm": function(d) { return "Confirmar correo electrónico:"; },
+  "loyaltyOffer.form_email_list_signup": function(d) { return "Sí, quiero recibir ofertas de Domino’s por email"; },
+  "loyaltyOffer.form_enroll_help_button": function(d) { return "Ayuda con el código Piece of the Pie Rewards&reg;"; },
+  "loyaltyOffer.form_error_max_length": function(d) { return "Please enter fewer characters."; },
+  "loyaltyOffer.form_error_mismatch": function(d) { return ""; },
+  "loyaltyOffer.form_error_required": function(d) { return "This field is required."; },
+  "loyaltyOffer.form_error_valid_email": function(d) { return "Please enter a valid email address."; },
+  "loyaltyOffer.form_error_valid_password": function(d) { return "Please enter at least 8 characters."; },
+  "loyaltyOffer.form_error_valid_phone": function(d) { return "Please enter a valid phone number."; },
+  "loyaltyOffer.form_name_first": function(d) { return "Nombre:"; },
+  "loyaltyOffer.form_name_last": function(d) { return "Apellido:"; },
+  "loyaltyOffer.form_password": function(d) { return "Contraseña"; },
+  "loyaltyOffer.form_password_confirm": function(d) { return "Confirmar Contraseña"; },
+  "loyaltyOffer.form_password_notification_1": function(d) { return ""; },
+  "loyaltyOffer.form_password_notification_2": function(d) { return ""; },
+  "loyaltyOffer.form_phone": function(d) { return "Teléfono principal:"; },
+  "loyaltyOffer.form_phone_placeholder": function(d) { return "Teléfono"; },
+  "loyaltyOffer.form_phone_placeholder_ext": function(d) { return "Interno"; },
+  "loyaltyOffer.form_required_message": function(d) { return ""; },
+  "loyaltyOffer.free_pizza": function(d) { return "Pizza Gratis"; },
+  "loyaltyOffer.offer_expired": function(d) { return "Parece que la oferta que estás tratando de activar ha vencido."; },
+  "loyaltyOffer.offer_header": function(d) { return "Y recibe"; },
+  "loyaltyOffer.offer_percent_off": function(d) { return "De descuento"; },
+  "loyaltyOffer.order": function(d) { return "Orden"; },
+  "loyaltyOffer.pizza_count": function(d) { return "1"; },
+  "loyaltyOffer.pizza_points_free": function(d) { return "60"; },
+  "loyaltyOffer.pizza_points_value": function(d) { return "10"; },
+  "loyaltyOffer.pts": function(d) { return "puntos"; }
+}
+}
+);

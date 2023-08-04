@@ -1,0 +1,94 @@
+define([], function anonymous(
+) {
+var pluralFuncs = {
+  es: function(n, ord) {
+    if (ord) return 'other';
+    return (n == 1) ? 'one' : 'other';
+  }
+};
+var fmt = {};
+var number = function(value, offset) {
+  if (isNaN(value)) throw new Error("'" + value + "' isn't a number.");
+  return value - (offset || 0);
+};
+var plural = function(value, offset, lcfunc, data, isOrdinal) {
+  if ({}.hasOwnProperty.call(data, value)) return data[value]();
+  if (offset) value -= offset;
+  var key = lcfunc(value, isOrdinal);
+  if (key in data) return data[key]();
+  return data.other();
+};
+var select = function(value, data) {
+  if ({}.hasOwnProperty.call(data, value)) return data[value]();
+  return data.other()
+};
+
+return {
+  "pizzaBuilder.alphabetical": function(d) { return "Alfabético (A-Z)"; },
+  "pizzaBuilder.choose_size_and_crust": function(d) { return "Choose Your Size &amp; Crust"; },
+  "pizzaBuilder.featured": function(d) { return "Destacado"; },
+  "pizzaBuilder.from": function(d) { return "Desde"; },
+  "pizzaBuilder.left": function(d) { return "Izquierda"; },
+  "pizzaBuilder.most_popular": function(d) { return ""; },
+  "pizzaBuilder.note": function(d) { return ""; },
+  "pizzaBuilder.popular": function(d) { return "Más Popular"; },
+  "pizzaBuilder.premium_cheese_price_text": function(d) { return "Personal : RM0.50</br>Regular : RM1.00</br>Large : RM2.00</br>Xtra Large : RM3.00"; },
+  "pizzaBuilder.recent_pizzas_add_pizza_to_order": function(d) { return "Agrega pizza al pedido"; },
+  "pizzaBuilder.recent_pizzas_add_recent_pizza": function(d) { return "Agrega una pizza que hayas pedido recientemente"; },
+  "pizzaBuilder.recent_pizzas_begin_from_scratch": function(d) { return "Empezar desde cero con una pizza de queso y crea la pizza de tus sueños."; },
+  "pizzaBuilder.recent_pizzas_see_pizzas": function(d) { return "Ver pedidos recientes"; },
+  "pizzaBuilder.recent_pizzas_skip_builder": function(d) { return "Sáltate el pizza builder y agrega a tu carrito una pizza que hayas pedido recientemente."; },
+  "pizzaBuilder.recent_pizzas_start_from_scratch": function(d) { return "Empezar desde cero"; },
+  "pizzaBuilder.remove_both_cheese_and_sauce": function(d) { return "Por favor confirma que quieres quitarle tanto el queso como la salsa a esta pizza. ¡Gracias!"; },
+  "pizzaBuilder.reset_pizza_selection": function(d) { return "Reiniciar Selección"; },
+  "pizzaBuilder.right": function(d) { return "Derecha"; },
+  "pizzaBuilder.size_10": function(d) { return ""; },
+  "pizzaBuilder.size_115": function(d) { return ""; },
+  "pizzaBuilder.size_12": function(d) { return ""; },
+  "pizzaBuilder.size_13": function(d) { return ""; },
+  "pizzaBuilder.size_14": function(d) { return ""; },
+  "pizzaBuilder.size_16": function(d) { return ""; },
+  "pizzaBuilder.size_18": function(d) { return ""; },
+  "pizzaBuilder.size_6": function(d) { return ""; },
+  "pizzaBuilder.size_8": function(d) { return ""; },
+  "pizzaBuilder.size_BRD": function(d) { return ""; },
+  "pizzaBuilder.size_cl": function(d) { return ""; },
+  "pizzaBuilder.size_gr": function(d) { return ""; },
+  "pizzaBuilder.size_label_10": function(d) { return ""; },
+  "pizzaBuilder.size_label_12": function(d) { return ""; },
+  "pizzaBuilder.size_label_14": function(d) { return ""; },
+  "pizzaBuilder.size_label_16": function(d) { return ""; },
+  "pizzaBuilder.size_label_6": function(d) { return ""; },
+  "pizzaBuilder.size_label_8": function(d) { return ""; },
+  "pizzaBuilder.size_label_BRD": function(d) { return ""; },
+  "pizzaBuilder.size_large": function(d) { return ""; },
+  "pizzaBuilder.size_lg": function(d) { return ""; },
+  "pizzaBuilder.size_ma11": function(d) { return "28"; },
+  "pizzaBuilder.size_ma14": function(d) { return "36"; },
+  "pizzaBuilder.size_ma16": function(d) { return "41"; },
+  "pizzaBuilder.size_md": function(d) { return ""; },
+  "pizzaBuilder.size_medium": function(d) { return ""; },
+  "pizzaBuilder.size_sm": function(d) { return ""; },
+  "pizzaBuilder.size_xl": function(d) { return ""; },
+  "pizzaBuilder.sort_by": function(d) { return "Ordenar Por"; },
+  "pizzaBuilder.sort_toppings": function(d) { return "Ordernar Ingredientes"; },
+  "pizzaBuilder.topping_required_C": function(d) { return "Lo sentimos, pero no se puede remover el queso de nuestras pizzas hechas a mano sin afectar la calidad de nuestro producto."; },
+  "pizzaBuilder.topping_side_left": function(d) { return "Izquierda"; },
+  "pizzaBuilder.topping_side_right": function(d) { return "Derecha"; },
+  "pizzaBuilder.topping_side_whole": function(d) { return "Entero"; },
+  "pizzaBuilder.weight_hash_double_description": function(d) { return "Doble"; },
+  "pizzaBuilder.weight_hash_double_prefix": function(d) { return "Doble "; },
+  "pizzaBuilder.weight_hash_extra_description": function(d) { return "Extra"; },
+  "pizzaBuilder.weight_hash_extra_prefix": function(d) { return "Extra "; },
+  "pizzaBuilder.weight_hash_light_description": function(d) { return "Poco"; },
+  "pizzaBuilder.weight_hash_light_prefix": function(d) { return "Poco "; },
+  "pizzaBuilder.weight_hash_none_description": function(d) { return "Ninguno"; },
+  "pizzaBuilder.weight_hash_none_prefix": function(d) { return "No "; },
+  "pizzaBuilder.weight_hash_normal_description": function(d) { return "Normal"; },
+  "pizzaBuilder.weight_hash_normal_prefix": function(d) { return ""; },
+  "pizzaBuilder.weight_hash_triple_description": function(d) { return "Triple"; },
+  "pizzaBuilder.weight_hash_triple_prefix": function(d) { return "Triple "; },
+  "pizzaBuilder.whole": function(d) { return "Completa"; }
+}
+}
+);

@@ -1,0 +1,69 @@
+define([], function anonymous(
+) {
+var pluralFuncs = {
+  es: function(n, ord) {
+    if (ord) return 'other';
+    return (n == 1) ? 'one' : 'other';
+  }
+};
+var fmt = {};
+var number = function(value, offset) {
+  if (isNaN(value)) throw new Error("'" + value + "' isn't a number.");
+  return value - (offset || 0);
+};
+var plural = function(value, offset, lcfunc, data, isOrdinal) {
+  if ({}.hasOwnProperty.call(data, value)) return data[value]();
+  if (offset) value -= offset;
+  var key = lcfunc(value, isOrdinal);
+  if (key in data) return data[key]();
+  return data.other();
+};
+var select = function(value, data) {
+  if ({}.hasOwnProperty.call(data, value)) return data[value]();
+  return data.other()
+};
+
+return {
+  "stjude.automatically_round_up": function(d) { return "I no longer want to automatically round up my change for St. Jude Children's Research Hospital<sup>®</sup>"; },
+  "stjude.automatically_round_up_error": function(d) { return "We’re sorry, we are unable to opt you out at this time. Please try again later."; },
+  "stjude.automatically_round_up_good": function(d) { return "You’ve been opted out of always donating your change to St. Jude."; },
+  "stjude.ecom43966_bandages_iv_bags": function(d) { return ""; },
+  "stjude.ecom43966_diapers_pediatric_isolation_gown": function(d) { return ""; },
+  "stjude.ecom43966_dolls_or_toys": function(d) { return ""; },
+  "stjude.ecom43966_every_dollar_impacts": function(d) { return ""; },
+  "stjude.ecom43966_no_chemo_party": function(d) { return ""; },
+  "stjude.ecom43966_pediatric_isolation_masks": function(d) { return ""; },
+  "stjude.ecom43966_rehabilitation_weights": function(d) { return ""; },
+  "stjude.give_to_help_live": function(d) { return "Pon tu granito de arena. Haz tu pedido ahora y dona. Saint Jude Children's Research Hospital."; },
+  "stjude.logo_alt_text": function(d) { return "Logo St. Jude"; },
+  "stjude.order_now_and_donate": function(d) { return "Ordena hoy y dona"; },
+  "stjude.roundup_always": function(d) { return "Siempre redondea mi pedido"; },
+  "stjude.roundup_be_the_hero": function(d) { return "Sé el héroe, redondea y haz un cambio"; },
+  "stjude.roundup_cent_donate": function(d) { return "cent donation"; },
+  "stjude.roundup_cent_now": function(d) { return "cents now"; },
+  "stjude.roundup_cents_now": function(d) { return "cents now"; },
+  "stjude.roundup_donate_to_st_jude": function(d) { return "Hazlo redondeando el total de tu pedido al siguiente dólar."; },
+  "stjude.roundup_join_in": function(d) { return "Únete a su misión: Desarrollando curas para salvar las vidas de niños."; },
+  "stjude.roundup_opt_in_to_automatically_round_up": function(d) { return "Opta por redondear tus cargos automáticamente en pedidos online futuros. Puedes optar por no participar en cualquier momento."; },
+  "stjude.roundup_would_you_like_to_donate": function(d) { return "¿Te gustaría donar a St. Jude?"; },
+  "stjude.roundup_yes_add": function(d) { return "Yes, add"; },
+  "stjude.roundup_yes_donate": function(d) { return ""; },
+  "stjude.roundup_yes_round_up_today": function(d) { return "Sí, redondea hoy"; },
+  "stjude.social_share_headline": function(d) { return "Agradecemos tu apoyo."; },
+  "stjude.social_share_subtext": function(d) { return "Comparte online con tu familia y amigos para que se unan a la causa."; },
+  "stjude.thermometer_status_full": function(d) { return "Estamos a " + d.stJudePercentage + "% de llegar a la meta d $10 millones. Campaña Saint Jude Thanks and Giving&reg; 2021"; },
+  "stjude.thermometer_status_left_1": function(d) { return "Estamos a "; },
+  "stjude.thermometer_status_left_2": function(d) { return " de llegar a la meta de $10 millones"; },
+  "stjude.thermometer_status_right": function(d) { return "Campaña St. Jude <em>Thanks and Giving<sup>&reg;</sup></em> 2021"; },
+  "stjude.thermometer_title": function(d) { return "Indicador de Donaciones para St Jude"; },
+  "stjude.thermometer_title_label": function(d) { return "Indicador de Donaciones para Saint Jude"; },
+  "stjude.upsell_description_no_coupon": function(d) { return "¿Te gustar&iacute;a donar a St. Jude?"; },
+  "stjude.upsell_description_with_coupon": function(d) { return "Ahorraste " + d.savingsAmount + " hoy. ¿Te gustar&iacute;a donar a St. Jude?"; },
+  "stjude.upsell_error_donation_too_much": function(d) { return "Donations through this form are limited to $99.99 or less. If you would like to donate a greater amount, please visit <a href=\"https://www.stjude.org/donate/tg-dominos.html\" target=\"_blank\">https://www.stjude.org/donate/tg-dominos.html</a> to donate."; },
+  "stjude.upsell_error_zero_donation": function(d) { return "Donation must be greater than $0.00"; },
+  "stjude.upsell_stjude_benefits": function(d) { return "<h2>Cada dólar que se dona a St. Jude tiene un impacto considerable. Ve de qué manera ayuda al hospital y a sus pacientes tu donativo:</h2> <p>Al donar <strong>$1</strong> puedes ayudar a St. Jude a proveer pañales para bebé o batas estériles para niños</p> <p>Al donar <strong>$2</strong> puedes ayudar a St. Jude a proveer vendas elásticas o bolsas de suero</p> <p>Al donar <strong>$5</strong> puedes ayudar a St. Jude a proveer pañales para niños pequeños o termómetros</p> <p>Al donar <strong>$10</strong> puedes ayudar a St. Jude a proveer muñecos de formación médica o juguetes nuevos para las salas de juegos del hospital</p>"; },
+  "stjude.upsell_stjude_operating_cost": function(d) { return ""; },
+  "stjude.upsell_title": function(d) { return "donaci&oacute;n para el St. Jude Children&apos;s Research Hospital<sup>&reg;</sup>"; }
+}
+}
+);

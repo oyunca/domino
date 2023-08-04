@@ -1,0 +1,1 @@
+define("dpz.storeAssistanceModule.constants",[],function(){var D="Delivery",C="Carryout",e="Domino's Carside Delivery",r="Pickup Window",I="Inactive";return{DELIVERY:D,CARRYOUT:C,DCD:e,PICKUP_WINDOW:r,INACTIVE:I,SERVICE_METHODS:{DELIVERY:D,CARRYOUT:C,DCD:e,PICKUP_WINDOW:r,INACTIVE:I},RADIO_NAMES:{DELIVERY:"Delivery",CARRYOUT:"Carryout",DCD:"Carryout_DUC"}}});

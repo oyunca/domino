@@ -1,0 +1,748 @@
+define([], function anonymous(
+) {
+var pluralFuncs = {
+  es: function(n, ord) {
+    if (ord) return 'other';
+    return (n == 1) ? 'one' : 'other';
+  }
+};
+var fmt = {};
+var number = function(value, offset) {
+  if (isNaN(value)) throw new Error("'" + value + "' isn't a number.");
+  return value - (offset || 0);
+};
+var plural = function(value, offset, lcfunc, data, isOrdinal) {
+  if ({}.hasOwnProperty.call(data, value)) return data[value]();
+  if (offset) value -= offset;
+  var key = lcfunc(value, isOrdinal);
+  if (key in data) return data[key]();
+  return data.other();
+};
+var select = function(value, data) {
+  if ({}.hasOwnProperty.call(data, value)) return data[value]();
+  return data.other()
+};
+
+return {
+  "seo.#!/section/Coupons/category/Feeds1To2/": function(d) { return ""; },
+  "seo.#!/section/Coupons/category/Feeds3To5/": function(d) { return ""; },
+  "seo.#!/section/Coupons/category/Feeds6Plus/": function(d) { return ""; },
+  "seo./": {
+    metaDescription: function(d) { return "Domino's Pizza te ofrece una increíble selección de pizzas deliciosas, calientes y listas para comer. Puedes ordenar en línea con nuestro sistema de pedidos."; },
+    metaKeywords: function(d) { return "order pizza online for delivery, pizza, domino's, pizza delivery, pizza online, order pizza online, order pizza, order pizza near me, order pizza online near me, order pizza at dominos, order a pizza online dominos, order pizza delivery online"; },
+    title: function(d) { return "Domino’s Pizza - Pide tu domicilio o recógelo en nuestra tienda"; }
+  },
+  "seo./#!/content/apps/": function(d) { return ""; },
+  "seo./#!/content/cookies/": {
+    metaDescription: function(d) { return "Este sitio utiliza cookies sobre tus hábitos de navegación, son usadas para reconocer tu interacción con nuestro sitio y darte una mejor experiencia de usuario"; },
+    title: function(d) { return "Domino's Pizza | Uso de cookies"; }
+  },
+  "seo./#!/content/dinnerBell/": function(d) { return ""; },
+  "seo./#!/content/giftCards/": {
+  },
+  "seo./#!/content/giftcards/": {
+    metaDescription: function(d) { return "Order pizza, pasta, sandwiches & more online for carryout or delivery from Domino's. View menu, find locations, track orders. Sign up for Domino's email & text offers to get great deals on your next order."; },
+    metaKeywords: function(d) { return "Legal Gift Cards - Domino's Pizza, Order Pizza Online for Delivery - Dominos.com"; },
+    title: function(d) { return "Legal Gift Cards - Domino's Pizza, Order Pizza Online for Delivery - Dominos.com"; }
+  },
+  "seo./#!/content/privacy/": {
+    metaDescription: function(d) { return "Conoce nuestras políticas de privacidad de datos y asegúrate de que todo lo que compartes en nuestra web está a salvo"; },
+    metaKeywords: function(d) { return "Legal Privacy Policy - Domino's Pizza, Order Pizza Online for Delivery - Dominos.com"; },
+    title: function(d) { return "Domino's Pizza | Políticas de privacidad"; }
+  },
+  "seo./#!/content/terms/": {
+    metaDescription: function(d) { return "Order pizza, pasta, sandwiches & more online for carryout or delivery from Domino's. View menu, find locations, track orders. Sign up for Domino's email & text offers to get great deals on your next order."; },
+    metaKeywords: function(d) { return "Legal Terms - Domino's Pizza, Order Pizza Online for Delivery - Dominos.com"; },
+    title: function(d) { return "Legal Terms - Domino's Pizza, Order Pizza Online for Delivery - Dominos.com"; }
+  },
+  "seo./about-pizza/": {
+    metaDescription: function(d) { return "Con más de 60 años de historia, hemos evolucionado y mejorado continuamente nuestra pizza. Conoce cómo hemos sido líderes en la industria de la pizza."; },
+    metaKeywords: function(d) { return ""; },
+    title: function(d) { return "Conoce la historia, todos hemos conocido un Domino's Pizza"; }
+  },
+  "seo./about-pizza/24-hour-food-delivery-near-me/": function(d) { return ""; },
+  "seo./about-pizza/24-hr-food-delivery/": function(d) { return ""; },
+  "seo./about-pizza/a-emporter/": function(d) { return ""; },
+  "seo./about-pizza/about-menu/": {
+    metaDescription: function(d) { return "Conoce todos los tamaños y sabores de las pizzas de Domino's. Ordena online, recíbela en tu casa o pasa por ella al local más cercano"; },
+    metaKeywords: function(d) { return ""; },
+    title: function(d) { return "Abre el menú Domino’s y disfruta de nuestros sabores donde quieras"; }
+  },
+  "seo./about-pizza/acerca-menu/": function(d) { return ""; },
+  "seo./about-pizza/amazon-echo/": {
+    metaDescription: function(d) { return "Domino's has teamed up with Amazon Echo to make it easy, convenient, and cool to order your favorite pizzas, pastas, sandwiches, and more on command."; },
+    metaKeywords: function(d) { return ""; },
+    title: function(d) { return "Order Your Domino's for Pickup or Delivery Using The Amazon Echo"; }
+  },
+  "seo./about-pizza/app/": function(d) { return ""; },
+  "seo./about-pizza/best-pizza/": function(d) { return ""; },
+  "seo./about-pizza/bread/bites/": function(d) { return ""; },
+  "seo./about-pizza/bread/bread-twists/": function(d) { return ""; },
+  "seo./about-pizza/bread/cheesy-bread/": function(d) { return ""; },
+  "seo./about-pizza/bread/oven-baked-dips-and-twists/": function(d) { return ""; },
+  "seo./about-pizza/bread/oven-baked-dips-and-twists/baked-apple-dip/": function(d) { return ""; },
+  "seo./about-pizza/bread/oven-baked-dips-and-twists/cheesy-marinara-dip/": function(d) { return ""; },
+  "seo./about-pizza/bread/oven-baked-dips-and-twists/five-cheese-dip/": function(d) { return ""; },
+  "seo./about-pizza/brownies-near-me/": function(d) { return ""; },
+  "seo./about-pizza/caesar-salad-near-me/": function(d) { return ""; },
+  "seo./about-pizza/calories-in-a-slice-of-pizza/": function(d) { return ""; },
+  "seo./about-pizza/carry-out-pizza/": function(d) { return ""; },
+  "seo./about-pizza/carryout-insurance/": {
+    metaDescription: function(d) { return "Domino’s makes sure your pizza is perfect when you pick it up. Now, Carryout Insurance protects your order from any accidents that might happen after you leave our stores."; },
+    metaKeywords: function(d) { return "carryout insurance"; },
+    title: function(d) { return "Domino’s Carryout Insurance Program"; }
+  },
+  "seo./about-pizza/carside-delivery/": function(d) { return ""; },
+  "seo./about-pizza/catering/": function(d) { return ""; },
+  "seo./about-pizza/chicken-alfredo-near-me/": function(d) { return ""; },
+  "seo./about-pizza/chicken-wings-delivery-near-you/": function(d) { return ""; },
+  "seo./about-pizza/chicken-wings/": function(d) { return ""; },
+  "seo./about-pizza/chicken/boneless-chicken/": function(d) { return ""; },
+  "seo./about-pizza/chicken/chicken-wings-near-me/": function(d) { return ""; },
+  "seo./about-pizza/chicken/hot-wings/": function(d) { return ""; },
+  "seo./about-pizza/chicken/mango-habanero-wings/": function(d) { return ""; },
+  "seo./about-pizza/chicken/wing-delivery-near-me/": function(d) { return ""; },
+  "seo./about-pizza/chicken/wings-near-me/": function(d) { return ""; },
+  "seo./about-pizza/chicken/wings-restaurant-near-me/": function(d) { return ""; },
+  "seo./about-pizza/chicken/wings-restaurant/": function(d) { return ""; },
+  "seo./about-pizza/comida-a-domicilio/": function(d) { return ""; },
+  "seo./about-pizza/commander-en-ligne/": function(d) { return ""; },
+  "seo./about-pizza/consegna-a-domicilio/": function(d) { return ""; },
+  "seo./about-pizza/consegna-pizza-online/": function(d) { return ""; },
+  "seo./about-pizza/consegna-pizza/": function(d) { return ""; },
+  "seo./about-pizza/convenient-dinners/": function(d) { return ""; },
+  "seo./about-pizza/coupons/": {
+    metaDescription: function(d) { return "¡Clic aquí para disfrutar tu pizza Domino's con uno de nuestros cupones! Solo selecciona tu ubicación y descubre las promociones que están cerca a ti"; },
+    metaKeywords: function(d) { return ""; },
+    title: function(d) { return "¡Redime uno de nuestros cupones Domino's! "; }
+  },
+  "seo./about-pizza/crusts/brooklyn-style/": function(d) { return ""; },
+  "seo./about-pizza/crusts/crunchy-thin/": function(d) { return ""; },
+  "seo./about-pizza/crusts/deep-dish-pizza/": function(d) { return ""; },
+  "seo./about-pizza/crusts/gluten-free/": function(d) { return ""; },
+  "seo./about-pizza/crusts/hand-tossed/": function(d) { return ""; },
+  "seo./about-pizza/crusts/handmade-pan/": function(d) { return ""; },
+  "seo./about-pizza/crusts/thin-crust-pizza/": function(d) { return ""; },
+  "seo./about-pizza/cupones/": function(d) { return ""; },
+  "seo./about-pizza/deals/": function(d) { return ""; },
+  "seo./about-pizza/delivery-desserts-near-me/": function(d) { return ""; },
+  "seo./about-pizza/delivery-hotspots/": {
+    metaDescription: function(d) { return "With new Domino’s Delivery Hotspots, you can get your favorite Domino’s pizza delivered piping hot to parks, beaches, stadium lots, and more."; },
+    metaKeywords: function(d) { return "delivery hotspots"; },
+    title: function(d) { return "Domino’s Delivery Hotspots™"; }
+  },
+  "seo./about-pizza/delivery-insurance/": function(d) { return ""; },
+  "seo./about-pizza/delivery-near-me-open-now/": function(d) { return ""; },
+  "seo./about-pizza/delivery-near-me/": function(d) { return ""; },
+  "seo./about-pizza/delivery-places-near-me/": function(d) { return ""; },
+  "seo./about-pizza/delivery-restaurants/": function(d) { return ""; },
+  "seo./about-pizza/desserts/brownies/": function(d) { return ""; },
+  "seo./about-pizza/desserts/cinnamon-bread-twists/": function(d) { return ""; },
+  "seo./about-pizza/desserts/desserts-near-me/": function(d) { return ""; },
+  "seo./about-pizza/desserts/lava-cake/": function(d) { return ""; },
+  "seo./about-pizza/desserts/marbled-cookie-brownie/": function(d) { return ""; },
+  "seo./about-pizza/dinner-bell/": function(d) { return ""; },
+  "seo./about-pizza/discounts/": function(d) { return ""; },
+  "seo./about-pizza/dominos-as-a-snack/": {
+    metaDescription: function(d) { return "Choose Domino's as a snack and order pizza, pasta, sandwiches, wings, & desserts to cure your snack attack. Order online for carryout or delivery!"; },
+    metaKeywords: function(d) { return ""; },
+    title: function(d) { return "Choose Pizza as a Snack! Order Domino's for Carryout or Delivery"; }
+  },
+  "seo./about-pizza/dominos-delivery-hours/": function(d) { return ""; },
+  "seo./about-pizza/dominos-foodpanda-promocode/": {
+  },
+  "seo./about-pizza/dominos-grabfood-promo-code/": {
+  },
+  "seo./about-pizza/en-linea-entrega/": function(d) { return ""; },
+  "seo./about-pizza/en-linea-pizza/": function(d) { return ""; },
+  "seo./about-pizza/entrega-comida/": function(d) { return ""; },
+  "seo./about-pizza/extended-food-delivery-hours/": function(d) { return ""; },
+  "seo./about-pizza/family-dinner/": function(d) { return ""; },
+  "seo./about-pizza/family-meal-deals/": function(d) { return ""; },
+  "seo./about-pizza/faq/": function(d) { return ""; },
+  "seo./about-pizza/fast-food-near-me/": function(d) { return ""; },
+  "seo./about-pizza/food-delivery-near-me-open-now/": function(d) { return ""; },
+  "seo./about-pizza/food-delivery-near-me/": function(d) { return ""; },
+  "seo./about-pizza/food-delivery/": {
+    metaDescription: function(d) { return "Que el próximo que llegue a casa sea el domicilio de Domino's, o si lo prefieres, pasa por tu orden al local más cercano. ¡Clic y pide tu pizza ya!"; },
+    metaKeywords: function(d) { return ""; },
+    title: function(d) { return "Recibe tu Domino's a domicilio ordenando online"; }
+  },
+  "seo./about-pizza/food-near-me/": function(d) { return ""; },
+  "seo./about-pizza/food-online/": {
+    metaDescription: function(d) { return "Order food online from Domino's and discover there's more to just ordering food online. Try interactive games, cheesy font, iPad app, and Domino's tracker."; },
+    metaKeywords: function(d) { return ""; },
+    title: function(d) { return "Order Food Online From Domino's and More Than Ordering Food Online"; }
+  },
+  "seo./about-pizza/food-open-near-me/": function(d) { return ""; },
+  "seo./about-pizza/food-order-online-malaysia/": {
+  },
+  "seo./about-pizza/food-places-near-me/": function(d) { return ""; },
+  "seo./about-pizza/food-places-that-deliver-near-me/": function(d) { return ""; },
+  "seo./about-pizza/good-lunch-places-near-me/": function(d) { return ""; },
+  "seo./about-pizza/gps-tracker/": function(d) { return ""; },
+  "seo./about-pizza/how-many-calories-in-a-piece-of-pizza/": function(d) { return ""; },
+  "seo./about-pizza/how-many-slices-are-in-a-large-pizza/": function(d) { return ""; },
+  "seo./about-pizza/ideas-for-dinner/": function(d) { return ""; },
+  "seo./about-pizza/kl-fast-food-delivery-online/": {
+  },
+  "seo./about-pizza/late-night-delivery-near-me/": function(d) { return ""; },
+  "seo./about-pizza/late-night-food-delivery/": function(d) { return ""; },
+  "seo./about-pizza/late-night-food-near-me/": function(d) { return ""; },
+  "seo./about-pizza/late-night-food/": function(d) { return ""; },
+  "seo./about-pizza/late-night-pizza/": function(d) { return ""; },
+  "seo./about-pizza/livraison-de-repas/": function(d) { return ""; },
+  "seo./about-pizza/livraison/": function(d) { return ""; },
+  "seo./about-pizza/local-pizza-places/": function(d) { return ""; },
+  "seo./about-pizza/local-pizza/": function(d) { return ""; },
+  "seo./about-pizza/local-places-to-eat-near-me/": function(d) { return ""; },
+  "seo./about-pizza/local-restaurants-near-me/": function(d) { return ""; },
+  "seo./about-pizza/low-calorie-pizza/": function(d) { return ""; },
+  "seo./about-pizza/lunch-catering/": function(d) { return ""; },
+  "seo./about-pizza/lunch-delivery-near-me/": function(d) { return ""; },
+  "seo./about-pizza/lunch-food-near-me/": function(d) { return ""; },
+  "seo./about-pizza/lunch-ideas/": {
+    metaDescription: function(d) { return "Discover Domino's lunch ideas for one or more. Advance order online small pizzas, oven baked sandwiches, boneless chicken, & wings for carryout or delivery."; },
+    metaKeywords: function(d) { return ""; },
+    title: function(d) { return "Domino's Lunch Ideas near you. Order ahead and online for Delivery"; }
+  },
+  "seo./about-pizza/lunch-near-me/": function(d) { return ""; },
+  "seo./about-pizza/lunch-options-near-me/": function(d) { return ""; },
+  "seo./about-pizza/lunch-places-near-me/": function(d) { return ""; },
+  "seo./about-pizza/lunch-restaurants-near-me/": function(d) { return ""; },
+  "seo./about-pizza/lunch-spots-near-me/": function(d) { return ""; },
+  "seo./about-pizza/menu/": function(d) { return ""; },
+  "seo./about-pizza/menu/bread/": function(d) { return ""; },
+  "seo./about-pizza/menu/desserts/": function(d) { return ""; },
+  "seo./about-pizza/menu/drinks/": function(d) { return ""; },
+  "seo./about-pizza/menu/pasta/": function(d) { return ""; },
+  "seo./about-pizza/menu/salad/": function(d) { return ""; },
+  "seo./about-pizza/menu/sandwiches/": function(d) { return ""; },
+  "seo./about-pizza/microsites/": {
+    metaDescription: function(d) { return "Domino's Pizza microsites deliver a glimpse into DXP: The Ultimate Pizza Delivery Vehicle, Pizza Payback, Domino's Anyware, and charitable giving."; },
+    metaKeywords: function(d) { return ""; },
+    title: function(d) { return "Domino's Microsites Are Fun and Informative"; }
+  },
+  "seo./about-pizza/nearby-restaurants/": function(d) { return ""; },
+  "seo./about-pizza/nearest-food-places-near-me/": function(d) { return ""; },
+  "seo./about-pizza/new-york-crust-pizza/": {
+  },
+  "seo./about-pizza/new-york-pizza/": function(d) { return ""; },
+  "seo./about-pizza/o-donaske/": function(d) { return ""; },
+  "seo./about-pizza/o-menu/": function(d) { return ""; },
+  "seo./about-pizza/occasions/baseball/": function(d) { return ""; },
+  "seo./about-pizza/occasions/birthday-parties/": function(d) { return ""; },
+  "seo./about-pizza/occasions/dominos-and-basketball/": function(d) { return ""; },
+  "seo./about-pizza/occasions/dominos-and-football/": function(d) { return ""; },
+  "seo./about-pizza/occasions/dominos-and-kids-parties/": function(d) { return ""; },
+  "seo./about-pizza/occasions/easy-dinner-ideas/": function(d) { return ""; },
+  "seo./about-pizza/occasions/office-parties/": function(d) { return ""; },
+  "seo./about-pizza/occasions/picnics/": function(d) { return ""; },
+  "seo./about-pizza/occasions/snacks/": function(d) { return ""; },
+  "seo./about-pizza/offers/": function(d) { return ""; },
+  "seo./about-pizza/online-bestellen/": function(d) { return ""; },
+  "seo./about-pizza/online-delivery/": {
+    metaDescription: function(d) { return "Antójate con el menú Domino's, elige tu pedido y haz tu orden online. ¡Así de fácil llegará tu pizza a casa!"; },
+    metaKeywords: function(d) { return ""; },
+    title: function(d) { return "¡Ordena online tu domicilio de pizza Domino's!"; }
+  },
+  "seo./about-pizza/online-food-delivery-near-me-malaysia/": {
+  },
+  "seo./about-pizza/online-order/": function(d) { return ""; },
+  "seo./about-pizza/online-pizza/": {
+    metaDescription: function(d) { return "La pizza se hizo para disfrutala donde quieras. ¡Ordena online y recíbela en tu casa o recoge tu pedido en la tienda Domino’s más cerca a tu ubicación!"; },
+    metaKeywords: function(d) { return ""; },
+    title: function(d) { return "Haz tu pedido Domino's en línea y recíbelo en casa o pasa por él"; }
+  },
+  "seo./about-pizza/options/sides/parmesan/": {
+    metaDescription: function(d) { return "Parmesan cheese is so popular at Domino's that you can buy your own Parmesan shaker, perfect for adding extra to pizzas and pastas. Don't forget an order of Parmesan Bread Bites!"; },
+    metaKeywords: function(d) { return ""; },
+    title: function(d) { return "Domino's Has Parmesan Bread Bites | Order Online for Pickup or Delivery"; }
+  },
+  "seo./about-pizza/order-food-online/": function(d) { return ""; },
+  "seo./about-pizza/other-foods/dominos/chocolate-lava-cake/": {
+    metaDescription: function(d) { return "Domino's Chocolate Lava Crunch Cake explodes with warm chocolate goodness. When you're ordering pizza, don't forget to add a little indulgence for dessert."; },
+    metaKeywords: function(d) { return ""; },
+    title: function(d) { return "Domino's Chocolate Lava Crunch Cake"; }
+  },
+  "seo./about-pizza/party-food-delivery/": {
+  },
+  "seo./about-pizza/pasta-delivery-near-me/": function(d) { return ""; },
+  "seo./about-pizza/pasta-near-me/": function(d) { return ""; },
+  "seo./about-pizza/pasta-restaurants-near-me/": function(d) { return ""; },
+  "seo./about-pizza/pasta/chicken-alfredo/": function(d) { return ""; },
+  "seo./about-pizza/pasta/chicken-carbonara/": function(d) { return ""; },
+  "seo./about-pizza/pasta/primavera/": function(d) { return ""; },
+  "seo./about-pizza/pedidos-en-linea/": function(d) { return ""; },
+  "seo./about-pizza/pepperoni-pizza/": {
+  },
+  "seo./about-pizza/petit-chef/": function(d) { return ""; },
+  "seo./about-pizza/pie-pass/": function(d) { return ""; },
+  "seo./about-pizza/pizza-adomicilio/": function(d) { return ""; },
+  "seo./about-pizza/pizza-around-me/": {
+    metaDescription: function(d) { return "Are you wondering, Is there a Domino’s pizza restaurant around me? The answer is probably yes. With thousands of locations, Domino’s is in or near your neighborhood."; },
+    metaKeywords: function(d) { return ""; },
+    title: function(d) { return "Is There a Domino's Pizza Around Me | Order Online for Pickup or Delivery"; }
+  },
+  "seo./about-pizza/pizza-crust/": {
+    metaDescription: function(d) { return "Browse the menu & order online from Domino's for carryout or delivery. Build your own pizza with a variety of crust options to choose from. Try Hand Tossed, Handmade Pan, Crunchy Thin, Brooklyn Style, or Gluten Free Crust today! Order online for carryout or delivery."; },
+    metaKeywords: function(d) { return ""; },
+    title: function(d) { return "Try Domino's Pizza - Pan & Hand Tossed, Thin, Brooklyn & Gluten Free"; }
+  },
+  "seo./about-pizza/pizza-crust/cheesy-crust/": function(d) { return ""; },
+  "seo./about-pizza/pizza-crust/pan-pizza/": function(d) { return ""; },
+  "seo./about-pizza/pizza-deals-near-me/": function(d) { return ""; },
+  "seo./about-pizza/pizza-delivery/": {
+    metaDescription: function(d) { return "Haz tu pedido Domino's online y recibe tu orden a domicilio o pasa por él al local más cercano. Deliciosas pizzas, acompañamientos y bebidas. ¡Pide ahora!"; },
+    metaKeywords: function(d) { return ""; },
+    title: function(d) { return "¡Clic aquí y ordena un domicilio Domino'’'s online!"; }
+  },
+  "seo./about-pizza/pizza-dough/": function(d) { return ""; },
+  "seo./about-pizza/pizza-entrega/": function(d) { return ""; },
+  "seo./about-pizza/pizza-for-dinner/": {
+    metaDescription: function(d) { return "When you need dinner ideas, Domino's pizza, pasta, wings, sandwiches & more are a great choice. Order online for carryout or delivery."; },
+    metaKeywords: function(d) { return ""; },
+    title: function(d) { return "Domino's Dinner Ideas for Pizza, Pasta, Wings, Sandwiches & Chicken"; }
+  },
+  "seo./about-pizza/pizza-lieferservice/": function(d) { return ""; },
+  "seo./about-pizza/pizza-lieferung/": function(d) { return ""; },
+  "seo./about-pizza/pizza-locations/": {
+    metaDescription: function(d) { return "Looking for the most convenient Domino's pizza locations? Just put in your location on our website, and we'll give you a list of pizzerias nearby ready for your order."; },
+    metaKeywords: function(d) { return ""; },
+    title: function(d) { return "Domino's Offers Convenient Pizza Locations | Order Online for Pickup or Delivery"; }
+  },
+  "seo./about-pizza/pizza-menu/": {
+    metaDescription: function(d) { return "Order a Domino's Specialty Pizza online for carryout or delivery. Try the Philly Cheese Steak, Pacific Veggie or Buffalo Chicken today."; },
+    metaKeywords: function(d) { return ""; },
+    title: function(d) { return "Order from the Domino's Pizza Menu or Customize Your Own Pizza"; }
+  },
+  "seo./about-pizza/pizza-near-me-open/": function(d) { return ""; },
+  "seo./about-pizza/pizza-near-me/": {
+    metaDescription: function(d) { return "If you're looking for 'pizza near me', think Domino's. With more than 12,600 pizzerias, there may be a nearby pizza store. Order online for carryout or delivery and track your order with Domino's Tracker®."; },
+    metaKeywords: function(d) { return ""; },
+    title: function(d) { return "Your Answer to Where's Pizza Near Me? Domino's Pizza."; }
+  },
+  "seo./about-pizza/pizza-offer/": function(d) { return ""; },
+  "seo./about-pizza/pizza-online/": {
+    metaDescription: function(d) { return ""; },
+    metaKeywords: function(d) { return ""; },
+    title: function(d) { return ""; }
+  },
+  "seo./about-pizza/pizza-open-now/": function(d) { return ""; },
+  "seo./about-pizza/pizza-party/": {
+    metaDescription: function(d) { return "Planning a pizza party just got easier. Order Domino’s pizza, pasta, wings, breadsticks, desserts, and drinks online. Group ordering available."; },
+    metaKeywords: function(d) { return ""; },
+    title: function(d) { return "Plan a Pizza Party with Domino's and Receive Pizza Party Deals"; }
+  },
+  "seo./about-pizza/pizza-place-near-me/": function(d) { return ""; },
+  "seo./about-pizza/pizza-places/": {
+    metaDescription: function(d) { return "Discover nearby pizza places for carryout or delivery options. Order and track your order with Domino's Tracker®."; },
+    metaKeywords: function(d) { return ""; },
+    title: function(d) { return "Find a nearby Pizza Place - Order Dominos for Takeout or Delivery"; }
+  },
+  "seo./about-pizza/pizza-promo/": {
+    metaDescription: function(d) { return "Entra para ver todas las promociones de pizza Domino's y no te quedes con el antojo. ¡Ven por la tuya!"; },
+    metaKeywords: function(d) { return ""; },
+    title: function(d) { return "¡Promociones Domino's Pizza!"; }
+  },
+  "seo./about-pizza/pizza-promociones/": function(d) { return ""; },
+  "seo./about-pizza/pizza-restaurant/": {
+    metaDescription: function(d) { return "From humble beginnings as a single pizza restaurant in 1960, Domino's has become today's recognized world leader in pizza delivery. Learn more about Domino's history in the pizza industry."; },
+    metaKeywords: function(d) { return ""; },
+    title: function(d) { return "Learn about Domino's Pizza Restaurant History in the Pizza Industry"; }
+  },
+  "seo./about-pizza/pizza-restaurants-near-me/": function(d) { return ""; },
+  "seo./about-pizza/pizza-sizes/": function(d) { return ""; },
+  "seo./about-pizza/pizza-wedding/": function(d) { return ""; },
+  "seo./about-pizza/pizzaboden/": function(d) { return ""; },
+  "seo./about-pizza/pizzaboden/cheesy-crust/": function(d) { return ""; },
+  "seo./about-pizza/pizzaboden/pan-pizza/": function(d) { return ""; },
+  "seo./about-pizza/pizzakurier/": function(d) { return ""; },
+  "seo./about-pizza/pizzeria/": {
+    metaDescription: function(d) { return "From the first Domino’s pizzeria that opened in 1960, Domino’s has grown into a world leader for delicious made-to-order pizza, pasta, wings, and more."; },
+    metaKeywords: function(d) { return ""; },
+    title: function(d) { return "Discover The American Pizzeria"; }
+  },
+  "seo./about-pizza/places-that-deliver-near-me/": function(d) { return ""; },
+  "seo./about-pizza/places-that-deliver/": function(d) { return ""; },
+  "seo./about-pizza/places-to-eat-nearby/": function(d) { return ""; },
+  "seo./about-pizza/places-to-get-a-salad-near-me/": function(d) { return ""; },
+  "seo./about-pizza/promociones-pizza/": function(d) { return ""; },
+  "seo./about-pizza/promos/": function(d) { return ""; },
+  "seo./about-pizza/promozioni-pizza/": function(d) { return ""; },
+  "seo./about-pizza/rabatte/": function(d) { return ""; },
+  "seo./about-pizza/restaurantes/": function(d) { return ""; },
+  "seo./about-pizza/restaurants-near-me-now/": function(d) { return ""; },
+  "seo./about-pizza/restaurants-near-me-open-late-night/": function(d) { return ""; },
+  "seo./about-pizza/restaurants-near-me-open-now/": function(d) { return ""; },
+  "seo./about-pizza/restaurants-near-me/": {
+    metaDescription: function(d) { return "No matter where you are, Domino’s likely has restaurants near me. Domino’s has more than 5,200 locations around the world serving pizza, pasta, chicken, sandwiches, desserts, and more."; },
+    metaKeywords: function(d) { return ""; },
+    title: function(d) { return "When wanting a pizza near me, look for a nearby Domino's."; }
+  },
+  "seo./about-pizza/restaurants-open-near-me/": function(d) { return ""; },
+  "seo./about-pizza/restaurants-that-deliver-near-me/": function(d) { return ""; },
+  "seo./about-pizza/salad-delivery-near-me/": function(d) { return ""; },
+  "seo./about-pizza/salad-delivery/": function(d) { return ""; },
+  "seo./about-pizza/salads-near-me/": function(d) { return ""; },
+  "seo./about-pizza/sandwich-delivery-near-me/": function(d) { return ""; },
+  "seo./about-pizza/sandwich-shops-near-me/": function(d) { return ""; },
+  "seo./about-pizza/sandwiches/cheese-steak/": function(d) { return ""; },
+  "seo./about-pizza/sandwiches/chicken-parm/": function(d) { return ""; },
+  "seo./about-pizza/sandwiches/italian-sandwich/": function(d) { return ""; },
+  "seo./about-pizza/sandwiches/philly-cheese-steak/": function(d) { return ""; },
+  "seo./about-pizza/sauces/alfredo-sauce/": function(d) { return ""; },
+  "seo./about-pizza/sauces/bbq-sauce/": function(d) { return ""; },
+  "seo./about-pizza/sauces/blue-cheese/": function(d) { return ""; },
+  "seo./about-pizza/sauces/garlic-parmesan-white-sauce/": function(d) { return ""; },
+  "seo./about-pizza/sauces/hot-sauce/": function(d) { return ""; },
+  "seo./about-pizza/sauces/icing/": function(d) { return ""; },
+  "seo./about-pizza/sauces/mango-habanero-sauce/": function(d) { return ""; },
+  "seo./about-pizza/sauces/marinara/": function(d) { return ""; },
+  "seo./about-pizza/sauces/pizza-sauce/": function(d) { return ""; },
+  "seo./about-pizza/sauces/ranch/": function(d) { return ""; },
+  "seo./about-pizza/sauces/tomato-sauce/": function(d) { return ""; },
+  "seo./about-pizza/sitemap/": function(d) { return ""; },
+  "seo./about-pizza/sizes/large/": function(d) { return ""; },
+  "seo./about-pizza/sizes/medium/": function(d) { return ""; },
+  "seo./about-pizza/sizes/small/": function(d) { return ""; },
+  "seo./about-pizza/sizes/x-large/": function(d) { return ""; },
+  "seo./about-pizza/specialty-pizzas/": function(d) { return ""; },
+  "seo./about-pizza/take-away/": function(d) { return ""; },
+  "seo./about-pizza/take-out-near-me/": function(d) { return ""; },
+  "seo./about-pizza/take-out-restaurants-near-me/": function(d) { return ""; },
+  "seo./about-pizza/terms-of-use/": function(d) { return ""; },
+  "seo./about-pizza/thin-crust-pizza-near-me/": function(d) { return ""; },
+  "seo./about-pizza/toppings/bacon/": function(d) { return ""; },
+  "seo./about-pizza/toppings/banana-peppers/": function(d) { return ""; },
+  "seo./about-pizza/toppings/bbq-chicken/": function(d) { return ""; },
+  "seo./about-pizza/toppings/beef/": function(d) { return ""; },
+  "seo./about-pizza/toppings/black-olives/": function(d) { return ""; },
+  "seo./about-pizza/toppings/buffalo-chicken/": function(d) { return ""; },
+  "seo./about-pizza/toppings/cheddar-cheese/": function(d) { return ""; },
+  "seo./about-pizza/toppings/cheese/": function(d) { return ""; },
+  "seo./about-pizza/toppings/chicken/": function(d) { return ""; },
+  "seo./about-pizza/toppings/diced-tomatoes/": function(d) { return ""; },
+  "seo./about-pizza/toppings/feta-cheese/": function(d) { return ""; },
+  "seo./about-pizza/toppings/garlic/": function(d) { return ""; },
+  "seo./about-pizza/toppings/green-peppers/": function(d) { return ""; },
+  "seo./about-pizza/toppings/habanero/": function(d) { return ""; },
+  "seo./about-pizza/toppings/ham/": function(d) { return ""; },
+  "seo./about-pizza/toppings/italian-sausage/": function(d) { return ""; },
+  "seo./about-pizza/toppings/jalapeno-peppers/": function(d) { return ""; },
+  "seo./about-pizza/toppings/mushrooms/": function(d) { return ""; },
+  "seo./about-pizza/toppings/onions/": function(d) { return ""; },
+  "seo./about-pizza/toppings/pepperoni/": function(d) { return ""; },
+  "seo./about-pizza/toppings/peppers/": function(d) { return ""; },
+  "seo./about-pizza/toppings/pineapple/": function(d) { return ""; },
+  "seo./about-pizza/toppings/pizza-toppings/": function(d) { return ""; },
+  "seo./about-pizza/toppings/provolone-cheese/": function(d) { return ""; },
+  "seo./about-pizza/toppings/roasted-red-peppers/": function(d) { return ""; },
+  "seo./about-pizza/toppings/salami/": function(d) { return ""; },
+  "seo./about-pizza/toppings/spinach/": function(d) { return ""; },
+  "seo./about-pizza/toppings/veggie/": function(d) { return ""; },
+  "seo./about-pizza/vegetarian-pizza/": function(d) { return ""; },
+  "seo./about-pizza/vegetarian/": {
+    metaDescription: function(d) { return "Domino’s offers vegetarian pizzas sure to please every taste. Try our popular Spinach & Feta Specialty Pizza, or build a custom vegetarian pizza online."; },
+    metaKeywords: function(d) { return ""; },
+    title: function(d) { return "Find Veggie Pizzas with Domino's Vegetarian Pizza Assortment"; }
+  },
+  "seo./about-pizza/what-time-does-dominos-close/": function(d) { return ""; },
+  "seo./about-pizza/wing-delivery/": function(d) { return ""; },
+  "seo./acerca-de-pizza/": {
+  },
+  "seo./acerca-de-pizza/acerca-menu/": {
+  },
+  "seo./acerca-de-pizza/cupones/": {
+  },
+  "seo./acerca-de-pizza/dominos-cupones/": {
+  },
+  "seo./acerca-de-pizza/dominos-delivery/": {
+  },
+  "seo./acerca-de-pizza/dominos-en-linea/": {
+  },
+  "seo./acerca-de-pizza/dominos-menu/": {
+  },
+  "seo./acerca-de-pizza/dominos-promociones/": {
+  },
+  "seo./acerca-de-pizza/en-linea-entrega/": {
+  },
+  "seo./acerca-de-pizza/en-linea-pizza/": {
+  },
+  "seo./acerca-de-pizza/entrega-comida/": {
+  },
+  "seo./acerca-de-pizza/pizza-delivery/": {
+  },
+  "seo./acerca-de-pizza/pizza-entrega/": {
+  },
+  "seo./acerca-de-pizza/pizza-menu/": {
+  },
+  "seo./acerca-de-pizza/pizza-promociones/": {
+  },
+  "seo./pages/#!/content/cookies/": {
+  },
+  "seo./pages/#/content/cookies/": function(d) { return ""; },
+  "seo./pages/carryout-insurance/": {
+    metaDescription: function(d) { return "Learn more about the Domino's Carryout Insurance program, now available for a limited time at participating Domino's locations."; },
+    metaKeywords: function(d) { return "dominos pizza menu, delivery food, delivery food prices, pizza deals, pizza deals online"; },
+    title: function(d) { return "Domino's Carryout Insurance | Domino's"; }
+  },
+  "seo./pages/content/customer-service/faq": {
+    metaDescription: function(d) { return "Conoce las preguntas más frecuentes que hacen nuestros clientes y aclara tus dudas sobre nuestro servicio."; },
+    metaKeywords: function(d) { return "pizza, pizzas, a pizza, new pizza, new crust, pizza delivery, pizza menu, pizza coupons, order pizza online, dominos, domino's pizza, dominos pizza, domino, dominoes, domin, domi, dominoes pizza, dominos pizza menu, dominos coupons, B.B.Q, bbq, bar b que, bar que, barbecue, barbque, sweet mango habenero, inspired chicken, new chicken, boneless chicken, chicken wings"; },
+    title: function(d) { return "Preguntas frecuentes - Domino's Pizza"; }
+  },
+  "seo./pages/content/customer-service/glutenfreecrust": {
+    metaDescription: function(d) { return "Domino's gluten free crust information features the gluten free pizza at Domino's that contains wheat, rye, barley content at less than 20ppm. Order gluten free today."; },
+    metaKeywords: function(d) { return "pizza, pizzas, a pizza, new pizza, new crust, pizza delivery, pizza menu, pizza coupons, order pizza online, dominos, domino's pizza, dominos pizza, domino, dominoes, domin, domi, dominoes pizza, dominos pizza menu, dominos coupons, B.B.Q, bbq, bar b que, bar que, barbecue, barbque, sweet mango habenero, inspired chicken, new chicken, boneless chicken, chicken wings"; },
+    title: function(d) { return "Domino's Gluten Free Crust Information - Gluten Free Pizza at Domino's"; }
+  },
+  "seo./pages/content/nutritional/allergen-info": {
+    metaDescription: function(d) { return "View Domino's nutritional allergen information chart with allergen information for all food items on the menu. Contact us for any questions or concerns."; },
+    metaKeywords: function(d) { return "dominos calories, dominos nutritional info"; },
+    title: function(d) { return "Nutritional Allergen Information Chart Guide - Domino's Pizza"; }
+  },
+  "seo./pages/content/nutritional/cal-o-meter": {
+    metaDescription: function(d) { return "Información nutricional del menú Domino's. Conoce de qué están hechas nuestras pizzas."; },
+    metaKeywords: function(d) { return "dominos calories, dominos nutritional info"; },
+    title: function(d) { return "Valores nutricionales del menú Domino's"; }
+  },
+  "seo./pages/content/nutritional/ingredients": {
+    metaDescription: function(d) { return "Información de ingredientes y de aportes nutricionales que se encuentran dentro de tu pizza Domino's"; },
+    metaKeywords: function(d) { return "dominos calories, dominos nutritional info"; },
+    title: function(d) { return "Conoce de qué está hecha tu pizza Domino's"; }
+  },
+  "seo./pages/content/nutritional/lighter-options": {
+    metaDescription: function(d) { return "Domino's Nutritional Lighter Options include veggie, veggie and chicken, chicken and green pepper, onion, chicken and ham, ham and pineapple. Order online now!"; },
+    metaKeywords: function(d) { return "dominos calories, dominos nutritional info"; },
+    title: function(d) { return "5 Nutritional Lighter Options before Ordering Pizza at Domino's"; }
+  },
+  "seo./pages/content/nutritional/nutrition": {
+    metaDescription: function(d) { return "Domino's nutritional information on the Cal-O-Meter includes Lighter Options, Gluten Free Crust, Ingredients, Allergen Info & FAQs. Download the nutrition details PDF."; },
+    metaKeywords: function(d) { return "dominos pizza profile, dominos, domino's pizza, dominos pizza, domino, dominoes, domin, domi, dominoes pizza, order pizza online"; },
+    title: function(d) { return "Nutritional Information on Your Favorite Foods on the Menu at Domino's"; }
+  },
+  "seo./pages/content/opt-in/opt-in": {
+    metaDescription: function(d) { return "Choose to opt in or our out of Domino's email & text offers online or by app. Sign up to receive promotional deals and specials by text or email."; },
+    metaKeywords: function(d) { return "pizza, pizzas, a pizza, new pizza, new crust, pizza delivery, pizza menu, pizza coupons, order pizza online, dominos, domino's pizza, dominos pizza, domino, dominoes, domin, domi, dominoes pizza, dominos pizza menu, dominos coupons, B.B.Q, bbq, bar b que, bar que, barbecue, barbque, sweet mango habenero, inspired chicken, new chicken, boneless chicken, chicken wings"; },
+    title: function(d) { return "Opt In for Domino's Email & Text Offers Online or by App"; }
+  },
+  "seo./pages/content/opt-out/opt-out": {
+    metaDescription: function(d) { return "Domino's Pizza lets you browse coupons and order online - try the all new hand tossed crust, robust sauce and shredded mozzarella cheese."; },
+    metaKeywords: function(d) { return "pizza, pizzas, a pizza, new pizza, new crust, pizza delivery, pizza menu, pizza coupons, order pizza online, dominos, domino's pizza, dominos pizza, domino, dominoes, domin, domi, dominoes pizza, dominos pizza menu, dominos coupons, B.B.Q, bbq, bar b que, bar que, barbecue, barbque, sweet mango habenero, inspired chicken, new chicken, boneless chicken, chicken wings"; },
+    title: function(d) { return "Email Opt Out - Domino's Pizza, Order Pizza Online for Delivery - Dominos.com"; }
+  },
+  "seo./pages/customer/": {
+    metaDescription: function(d) { return "Un Pizza Profile de Domino’s permite que guardes información personal y de pago para pagar más rápido, tener acceso a pedidos anteriores y unirte al programa Domino's Piece of the Pie Rewards para obtener puntos de recompensa para pizza gratis."; },
+    title: function(d) { return "Pizza Profile de Domino’s – Suscríbete o Ingresa Hoy"; }
+  },
+  "seo./pages/customer/#!/ccpa/": {
+    title: function(d) { return "Domino's | Derechos del Consumidor"; }
+  },
+  "seo./pages/customer/#!/customer/claim-rewards/": {
+  },
+  "seo./pages/customer/#!/customer/login/": {
+    metaDescription: function(d) { return "Inicia tu sesión en Domino's para editar o administrar tu perfil, registra tu método de pago y así podrás ordenar más fácil. ¡Entra aquí!"; },
+    title: function(d) { return "¿Ya estás registrado en Domino's?"; }
+  },
+  "seo./pages/customer/#!/customer/profile/": {
+    metaDescription: function(d) { return "Crea tu perfil en la web de Domino’s. Podrás tener acceso a todo tu historial de compra y guardar tus datos. ¡Así será mucho más fácil hacer tus órdenes!"; },
+    metaKeywords: function(d) { return "dominos pizza profile, dominos, domino's pizza, dominos pizza, domino, dominoes, domin, domi, dominoes pizza, order pizza online"; },
+    title: function(d) { return "Regístrate ya en dominos.com.co"; }
+  },
+  "seo./pages/customer/#!/customer/profile/new": {
+    metaDescription: function(d) { return "¿Sabías que si te registras en la web de Domino's tus compras serán más fáciles? ¡Ingresa y ordena tu pizza ya!"; },
+    metaKeywords: function(d) { return "dominos pizza profile, dominos, domino's pizza, dominos pizza, domino, dominoes, domin, domi, dominoes pizza, order pizza online"; },
+    title: function(d) { return "Regístrate en Domino's y haz tu pedido ya"; }
+  },
+  "seo./pages/customer/#!/customer/rewards/": {
+    metaDescription: function(d) { return "El Programa Domino’s Piece of the Pie Rewards te da puntos de recompensa para pizzas gratis. Aprende más sobre los beneficios de ser miembro y cómo, con nuestro programa de lealtad, estarás comiendo pizza gratis cuánto antes. Únete hoy."; },
+    metaKeywords: function(d) { return "dominos pizza profile, dominos, domino's pizza, dominos pizza, domino, dominoes, domin, domi, dominoes pizza, order pizza online"; },
+    title: function(d) { return "Piece of the Pie Rewards | Programa de Recompensas de Domino’s"; }
+  },
+  "seo./pages/customer/#!/customer/settings/": {
+    metaDescription: function(d) { return "Administra tu información de contacto, agrega direcciones y edita tus métodos de pago para que puedas ordenar más rápido"; },
+    metaKeywords: function(d) { return "dominos pizza profile, dominos, domino's pizza, dominos pizza, domino, dominoes, domin, domi, dominoes pizza, order pizza online"; },
+    title: function(d) { return "Edita tu perfil en la web de Domino's"; }
+  },
+  "seo./pages/giftcard/": {
+    metaDescription: function(d) { return "Order gift cards & eGift cards from Domino's in electronic or plastic. Submit corporate order or check your remaining balance. Order online today!"; },
+    metaKeywords: function(d) { return "dominos pizza menu, delivery food, delivery food prices, pizza deals, pizza deals online"; },
+    title: function(d) { return "Order Gift Cards & eGift Cards from Dominos for Pizza, Pasta, & Wings"; }
+  },
+  "seo./pages/international": {
+    metaDescription: function(d) { return "Disfruta de la deliciosa Pizza y bebidas que ofrecemos en nuestros establecimientos ¡realiza tu pedido en línea y prepárate para que la pizza llegue a tu puerta!"; },
+    title: function(d) { return "Encuentra el Domino's Pizza más cercano de tu ubicación"; }
+  },
+  "seo./pages/international/": {
+  },
+  "seo./pages/order/": {
+    metaDescription: function(d) { return "Nuestro servicio de entrega a domicilio es rápido y fácil, aseguramos que tu pedido llegue a su destino caliente y listo para comer. también puedes recogerlo en la tienda."; },
+    title: function(d) { return "Servicio a domicilio o recoge en una de nuestras tiendas"; }
+  },
+  "seo./pages/order/#!/checkout/": {
+    metaDescription: function(d) { return "Revisar y modificar tus productos."; },
+    metaKeywords: function(d) { return ""; },
+    title: function(d) { return "Carrito | Domino's Pizza"; }
+  },
+  "seo./pages/order/#!/locations/": function(d) { return ""; },
+  "seo./pages/order/#!/locations/results/": {
+  },
+  "seo./pages/order/#!/locations/search/": {
+    metaDescription: function(d) { return "Si desea encontrar su tienda más cercana, puede visitar nuestro sitio web. Conoce también nuestras ofertas y promociones."; },
+    metaKeywords: function(d) { return "dominos pizza menu, delivery food, delivery food prices, pizza deals, pizza deals online"; },
+    title: function(d) { return "Encuentra tu tienda más cercana y pide tu Pizza Domino's"; }
+  },
+  "seo./pages/order/#!/locations/search/?type=Carryout": {
+  },
+  "seo./pages/order/#!/locations/search/?type=Delivery": {
+  },
+  "seo./pages/order/#!/section/Coupons/category/All/": {
+  },
+  "seo./pages/order/#!/section/Coupons/category/All/ ": {
+    metaDescription: function(d) { return "Domino's ofrece promociones y descuentos exclusivos para los clientes más leales. Para acceder a nuestras promociones visite nuestro sitio web."; },
+    title: function(d) { return "Accede a nuestras mejores promociones y descuentos"; }
+  },
+  "seo./pages/order/#!/section/Coupons/category/EnterCode/": {
+  },
+  "seo./pages/order/#!/section/Food/category/AllDrinks/": {
+    metaDescription: function(d) { return "¡Prueba nuestras deliciosas bebidas refrescantes en tu próxima visita a Domino's Pizza! ¡Es una manera deliciosa de disfrutar de tu pizza!"; },
+    title: function(d) { return "Disfruta de nuestras deliciosas bebidas refrescantes"; }
+  },
+  "seo./pages/order/#!/section/Food/category/AllEntrees/": {
+    metaDescription: function(d) { return "Puedes elegir entre nuestros deliciosos quesos, carnes y vegetales. ¡Todos nuestros ingredientes son de la más alta calidad para que tu pizza sea la mejor!"; },
+    title: function(d) { return "Escoge tu especialidad favorita o crea tu propia Pizza"; }
+  },
+  "seo./pages/order/#!/section/Food/category/AllPizzas/": {
+  },
+  "seo./pages/order/#!/section/Food/category/AllSides/": {
+    metaDescription: function(d) { return "¡Con nuestros palitos de queso, Arequipe rolls y canela baitz, ¡tu pizza se pondrá aún más deliciosa! "; },
+    title: function(d) { return "Acompaña tu Pizza con los mejores acompañamientos"; }
+  },
+  "seo./pages/order/#!/section/Food/category/Bread/": {
+  },
+  "seo./pages/order/#!/section/Food/category/Dessert/": {
+  },
+  "seo./pages/order/#!/section/Food/category/Sides/": {
+  },
+  "seo./pages/order/#!/section/Food/category/Wings/": {
+  },
+  "seo./pages/order/#!/store-list/": {
+    metaDescription: function(d) { return "Find your local Domino's Pizza store and order delivery or take away! 17 stores in Geneva, Zurich, Basel, Bern, Winterthur, Dietikon and Neuchâtel"; },
+    metaKeywords: function(d) { return "Domino's Pizza stores, Domino's Pizza Menu, Pizza, Food Delivery, Take Away, Domino's Pizza Prices, Pizza Deals, Special Offer, home delivery, pizza zurich, pizza geneva, pizza basel"; },
+    title: function(d) { return "Domino's Pizza | Stores"; }
+  },
+  "seo./pages/order/#/locations/search/": function(d) { return ""; },
+  "seo./pages/order/#/store-list/": function(d) { return ""; },
+  "seo./pages/order/coupon": {
+    metaDescription: function(d) { return "Encuentra el local Domino’s más cerca de donde estás y elige entre pasar por tu pedido o que te lo lleven a domicilio. ¿Qué opción prefieres?"; },
+    title: function(d) { return "El sabor Domino’s en la puerta de tu casa | Ordena online"; }
+  },
+  "seo./pages/order/coupon#!/coupon/national/": {
+    metaDescription: function(d) { return "Accede a nuestras mejores promociones y descuentos"; },
+    metaKeywords: function(d) { return "dominos pizza menu, delivery food, delivery food prices, pizza deals, pizza deals online"; },
+    title: function(d) { return "El sabor Domino's en la puerta de tu casa | Ordena online"; }
+  },
+  "seo./pages/order/menu": {
+    metaDescription: function(d) { return " Nuestro menú de pizza consta de una gran variedad de sabores, ofrecemos varios acompañamientos como palitos de queso, arequipe rolls y canela baitz."; },
+    title: function(d) { return "Conoces nuestro menú de Pizza, acompañamientos y bebidas"; }
+  },
+  "seo./pages/order/menu#!/menu/category/all/": {
+    metaDescription: function(d) { return "Antójate con todo lo que trae el menú Domino's. Pizzas, acompañamientos y bebidas. ¡Ordena online!"; },
+    title: function(d) { return "Menú Domino's - ¡Ordena ya!"; }
+  },
+  "seo./pages/order/menu#!/menu/category/breads/": {
+  },
+  "seo./pages/order/menu#!/menu/category/breadsAndSides/": {
+  },
+  "seo./pages/order/menu#!/menu/category/breadsandsides/": function(d) { return ""; },
+  "seo./pages/order/menu#!/menu/category/byo-pizza/": {
+  },
+  "seo./pages/order/menu#!/menu/category/calzon/": {
+  },
+  "seo./pages/order/menu#!/menu/category/chicken/": {
+  },
+  "seo./pages/order/menu#!/menu/category/combo/": {
+  },
+  "seo./pages/order/menu#!/menu/category/desserts/": {
+    metaDescription: function(d) { return "Domino's pizza menu includes build your own, & specialty pizza, sandwiches, pasta, chicken, breads, salads, drinks, & desserts. Order carryout or delivery."; },
+    metaKeywords: function(d) { return "order pizza online for delivery, pizza, domino's, pizza delivery, pizza online, order pizza online, order pizza, order pizza near me, order pizza online near me, order pizza at dominos, order a pizza online dominos, order pizza delivery online"; },
+    title: function(d) { return "Order from the Domino's Pizza Menu for Carryout or Delivery"; }
+  },
+  "seo./pages/order/menu#!/menu/category/drinks/": {
+    metaDescription: function(d) { return "Domino's pizza menu includes build your own, & specialty pizza, sandwiches, pasta, chicken, breads, salads, drinks, & desserts. Order carryout or delivery."; },
+    metaKeywords: function(d) { return "order pizza online for delivery, pizza, domino's, pizza delivery, pizza online, order pizza online, order pizza, order pizza near me, order pizza online near me, order pizza at dominos, order a pizza online dominos, order pizza delivery online"; },
+    title: function(d) { return "Order from the Domino's Pizza Menu for Carryout or Delivery"; }
+  },
+  "seo./pages/order/menu#!/menu/category/entrees/": {
+    metaDescription: function(d) { return "Domino's pizza menu includes build your own, & specialty pizza, sandwiches, pasta, chicken, breads, salads, drinks, & desserts. Order carryout or delivery."; },
+    metaKeywords: function(d) { return "order pizza online for delivery, pizza, domino's, pizza delivery, pizza online, order pizza online, order pizza, order pizza near me, order pizza online near me, order pizza at dominos, order a pizza online dominos, order pizza delivery online"; },
+    title: function(d) { return "Order from the Domino's Pizza Menu for Carryout or Delivery"; }
+  },
+  "seo./pages/order/menu#!/menu/category/extras/": {
+  },
+  "seo./pages/order/menu#!/menu/category/gifts/": {
+  },
+  "seo./pages/order/menu#!/menu/category/menu/": {
+  },
+  "seo./pages/order/menu#!/menu/category/pasta/": {
+  },
+  "seo./pages/order/menu#!/menu/category/pizza/": {
+  },
+  "seo./pages/order/menu#!/menu/category/salads/": {
+  },
+  "seo./pages/order/menu#!/menu/category/sandwich/": {
+  },
+  "seo./pages/order/menu#!/menu/category/sides/": {
+    metaDescription: function(d) { return "Domino's pizza menu includes build your own, & specialty pizza, sandwiches, pasta, chicken, breads, salads, drinks, & desserts. Order carryout or delivery."; },
+    metaKeywords: function(d) { return "order pizza online for delivery, pizza, domino's, pizza delivery, pizza online, order pizza online, order pizza, order pizza near me, order pizza online near me, order pizza at dominos, order a pizza online dominos, order pizza delivery online"; },
+    title: function(d) { return "Order from the Domino's Pizza Menu for Carryout or Delivery"; }
+  },
+  "seo./pages/order/menu#!/menu/category/specialty-pizzas/": {
+  },
+  "seo./pages/order/menu#!/menu/category/viewall/": {
+    metaDescription: function(d) { return "Échale un vistazo a las pizzas de Domino’s en nuestro menú online. Elige tu favorita y pide desde nuestra web. ¡Ordena aquí!"; },
+    metaKeywords: function(d) { return "order pizza online for delivery, pizza, domino's, pizza delivery, pizza online, order pizza online, order pizza, order pizza near me, order pizza online near me, order pizza at dominos, order a pizza online dominos, order pizza delivery online"; },
+    title: function(d) { return "Menú Domino's Pizza | Pizzas, bebidas y postres"; }
+  },
+  "seo./pages/order/payment": {
+    metaDescription: function(d) { return "Resumen de la orden y pago. Ingresa la información de pago para completar."; },
+    metaKeywords: function(d) { return ""; },
+    title: function(d) { return "Pago | Domino’s Pizza"; }
+  },
+  "seo./pages/rewards/#!/claim/": {
+  },
+  "seo./pages/rewards/#!/create-profile/": {
+    metaDescription: function(d) { return "Crea un Pizza Profile de Domino’s para guardar información personal y de pago para un pago más rápido, acceso a órdenes previas y para unirte al programa Piece of the Pie Rewards para obtener pizza gratis."; },
+    metaKeywords: function(d) { return "dominos pizza profile, dominos, domino's pizza, dominos pizza, domino, dominoes, domin, domi, dominoes pizza, order pizza online"; },
+    title: function(d) { return "Crea tu Pizza Profile de Domino’s – Regístrate Hoy"; }
+  },
+  "seo./pages/rewards/#!/rewards/": {
+    metaDescription: function(d) { return "El Programa Domino’s Piece of the Pie Rewards te da puntos de recompensa para pizzas gratis. Aprende más sobre los beneficios de ser miembro y cómo, con nuestro programa de lealtad, estarás comiendo pizza gratis cuánto antes. Únete hoy."; },
+    metaKeywords: function(d) { return "dominos pizza profile, dominos, domino's pizza, dominos pizza, domino, dominoes, domin, domi, dominoes pizza, order pizza online"; },
+    title: function(d) { return "Piece of the Pie Rewards | Programa de Recompensas de Domino’s"; }
+  },
+  "seo./pages/services/": {
+  },
+  "seo./pages/services/?p=customerFeedback": {
+    metaDescription: function(d) { return "Conoce aquí cómo contactarte con nosotros para dejar tus dudas o comentarios, estaremos respondiendo a ellas lo antes posible"; },
+    title: function(d) { return "Domino's Pizza | Servicio al cliente | PQR’s"; }
+  },
+  "seo./pages/services/customer-feedback": {
+    metaDescription: function(d) { return "Conoce aquí cómo contactarte con nosotros para dejar tus dudas o comentarios, estaremos respondiendo a ellas lo antes posible"; },
+    title: function(d) { return "Domino's Pizza | Servicio al cliente | PQR’s"; }
+  },
+  "seo./pages/tracker/": {
+    metaDescription: function(d) { return "Puede rastrear el estado de tu pedido en línea ingresando los datos de tu orden, esto te permitirá conocer cuándo llegará a su destino."; },
+    title: function(d) { return " Rastrea y conoce el estado de tu pedido a un solo clic"; }
+  },
+  "seo./pages/tracker/#!/track/order/": {
+    metaDescription: function(d) { return "Puede rastrear el estado de tu pedido en línea ingresando los datos de tu orden, esto te permitirá conocer cuándo llegará a su destino."; },
+    metaKeywords: function(d) { return "pizza, pizzas, a pizza, new pizza, new crust, pizza delivery, pizza menu, pizza coupons, order pizza online, dominos, domino's pizza, dominos pizza, domino, dominoes, domin, domi, dominoes pizza, dominos pizza menu, dominos coupons, B.B.Q, bbq, bar b que, bar que, barbecue, barbque, sweet mango habenero, inspired chicken, new chicken, boneless chicken, chicken wings"; },
+    title: function(d) { return "Rastrea y conoce el estado de tu pedido a un solo clic"; }
+  },
+  "seo.pages/tracker/#!/track/order/": {
+  }
+}
+}
+);

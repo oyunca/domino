@@ -1,0 +1,50 @@
+define([], function anonymous(
+) {
+var pluralFuncs = {
+  es: function(n, ord) {
+    if (ord) return 'other';
+    return (n == 1) ? 'one' : 'other';
+  }
+};
+var fmt = {};
+var number = function(value, offset) {
+  if (isNaN(value)) throw new Error("'" + value + "' isn't a number.");
+  return value - (offset || 0);
+};
+var plural = function(value, offset, lcfunc, data, isOrdinal) {
+  if ({}.hasOwnProperty.call(data, value)) return data[value]();
+  if (offset) value -= offset;
+  var key = lcfunc(value, isOrdinal);
+  if (key in data) return data[key]();
+  return data.other();
+};
+var select = function(value, data) {
+  if ({}.hasOwnProperty.call(data, value)) return data[value]();
+  return data.other()
+};
+
+return {
+  "nutrition.build_a_pizza": function(d) { return "Crear una pizza..."; },
+  "nutrition.calories": function(d) { return "Calories"; },
+  "nutrition.counting_calories": function(d) { return "¿Contando Calorías?"; },
+  "nutrition.crust": function(d) { return "Masa"; },
+  "nutrition.favorites": function(d) { return "Favoritos"; },
+  "nutrition.got_it_thanks": function(d) { return "¡Listo, gracias!"; },
+  "nutrition.load_up_veggies": function(d) { return "Añade muchos vegetales ya que contienen pocas calorías"; },
+  "nutrition.no_nutrition_info": function(d) { return "We're sorry. Nutrition information is temporarily unavailable."; },
+  "nutrition.pick_meats": function(d) { return "Elige una carne baja en calorías - Pollo, Jamón o Philly Steak"; },
+  "nutrition.saturated_fat": function(d) { return "Saturated Fat (g)"; },
+  "nutrition.sauce": function(d) { return "Sauce"; },
+  "nutrition.serving_size": function(d) { return "Tamaño"; },
+  "nutrition.side_salads": function(d) { return "Completa tu orden con una ensalada"; },
+  "nutrition.size": function(d) { return "Tamaño"; },
+  "nutrition.slice": function(d) { return "1/8 of Pizza"; },
+  "nutrition.sodium": function(d) { return "Sodium (mg)"; },
+  "nutrition.some_options": function(d) { return "Estos son algunos consejos para opciones más ligeras:"; },
+  "nutrition.speciality_pizzas": function(d) { return "Pizzas especiales"; },
+  "nutrition.total_sugars": function(d) { return "Total Sugars (g)"; },
+  "nutrition.view_details": function(d) { return "Ver detalles"; },
+  "nutrition.weight": function(d) { return "Weight g (oz)"; }
+}
+}
+);

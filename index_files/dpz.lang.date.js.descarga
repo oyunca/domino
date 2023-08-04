@@ -1,0 +1,68 @@
+define([], function anonymous(
+) {
+var pluralFuncs = {
+  es: function(n, ord) {
+    if (ord) return 'other';
+    return (n == 1) ? 'one' : 'other';
+  }
+};
+var fmt = {};
+var number = function(value, offset) {
+  if (isNaN(value)) throw new Error("'" + value + "' isn't a number.");
+  return value - (offset || 0);
+};
+var plural = function(value, offset, lcfunc, data, isOrdinal) {
+  if ({}.hasOwnProperty.call(data, value)) return data[value]();
+  if (offset) value -= offset;
+  var key = lcfunc(value, isOrdinal);
+  if (key in data) return data[key]();
+  return data.other();
+};
+var select = function(value, data) {
+  if ({}.hasOwnProperty.call(data, value)) return data[value]();
+  return data.other()
+};
+
+return {
+  "date.months_april": function(d) { return "Abril"; },
+  "date.months_august": function(d) { return "Agosto"; },
+  "date.months_december": function(d) { return "Diciembre"; },
+  "date.months_february": function(d) { return "Febrero"; },
+  "date.months_january": function(d) { return "Enero"; },
+  "date.months_july": function(d) { return "Julio"; },
+  "date.months_june": function(d) { return "Junio"; },
+  "date.months_march": function(d) { return "Marzo"; },
+  "date.months_may": function(d) { return "Mayo"; },
+  "date.months_november": function(d) { return "Noviembre"; },
+  "date.months_october": function(d) { return "Octubre"; },
+  "date.months_september": function(d) { return "Septiembre"; },
+  "date.short_months_april": function(d) { return "abr."; },
+  "date.short_months_august": function(d) { return "agosto"; },
+  "date.short_months_december": function(d) { return "dic."; },
+  "date.short_months_february": function(d) { return "feb."; },
+  "date.short_months_january": function(d) { return "enero"; },
+  "date.short_months_july": function(d) { return "jul."; },
+  "date.short_months_june": function(d) { return "jun."; },
+  "date.short_months_march": function(d) { return "marzo"; },
+  "date.short_months_may": function(d) { return "mayo"; },
+  "date.short_months_november": function(d) { return "nov."; },
+  "date.short_months_october": function(d) { return "oct."; },
+  "date.short_months_september": function(d) { return "sept."; },
+  "date.short_weekdays": function(d) { return ""; },
+  "date.short_weekdays_friday": function(d) { return "Vier"; },
+  "date.short_weekdays_monday": function(d) { return "Lun"; },
+  "date.short_weekdays_saturday": function(d) { return "Sab"; },
+  "date.short_weekdays_sunday": function(d) { return "Dom"; },
+  "date.short_weekdays_thursday": function(d) { return "Jue"; },
+  "date.short_weekdays_tuesday": function(d) { return "Mar"; },
+  "date.short_weekdays_wednesday": function(d) { return "Mie"; },
+  "date.weekdays_friday": function(d) { return "viernes"; },
+  "date.weekdays_monday": function(d) { return "lunes"; },
+  "date.weekdays_saturday": function(d) { return "sabado"; },
+  "date.weekdays_sunday": function(d) { return "domingo"; },
+  "date.weekdays_thursday": function(d) { return "jueves"; },
+  "date.weekdays_tuesday": function(d) { return "martes"; },
+  "date.weekdays_wednesday": function(d) { return "miércoles"; }
+}
+}
+);

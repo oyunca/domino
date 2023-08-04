@@ -1,0 +1,155 @@
+define([], function anonymous(
+) {
+var pluralFuncs = {
+  es: function(n, ord) {
+    if (ord) return 'other';
+    return (n == 1) ? 'one' : 'other';
+  }
+};
+var fmt = {};
+var number = function(value, offset) {
+  if (isNaN(value)) throw new Error("'" + value + "' isn't a number.");
+  return value - (offset || 0);
+};
+var plural = function(value, offset, lcfunc, data, isOrdinal) {
+  if ({}.hasOwnProperty.call(data, value)) return data[value]();
+  if (offset) value -= offset;
+  var key = lcfunc(value, isOrdinal);
+  if (key in data) return data[key]();
+  return data.other();
+};
+var select = function(value, data) {
+  if ({}.hasOwnProperty.call(data, value)) return data[value]();
+  return data.other()
+};
+
+return {
+  "ccpa.and": function(d) { return "and"; },
+  "ccpa.authorization_body": function(d) { return "Por razones de seguridad, asegurémonos que eres tú. Selecciona una de las siguientes opciones de verificación para que te enviemos un código. **Por favor nota que tendrás que usar la información de contacto asociada con tu último pedido de Domino's.**"; },
+  "ccpa.authorization_body_opt_out": function(d) { return "Para optar por no vender tu información personal, necesitaremos asegurarnos de que eres tú. Por favor ingresa tu dirección de correo electrónico a continuación para recibir un código de verificación para empezar."; },
+  "ccpa.authorization_opt_out_via_email": function(d) { return "<p>Debido a las limitaciones técnicas de nuestro sistema, esta solicitud para optar por excluirte está limitada a este dispositivo. Domino's usa la dirección de correo electrónico proporcionada para enviarte una confirmación de esta solicitud.</p><p>Si deseas hacer una solicitud por correo electrónico para optar por excluirte, por favor contáctanos en <a href='mailto:privacy@dominos.com'>privacy@dominos.com</a>. Las solicitudes deben incluir CCPA Opt-Out en la línea de asunto.</p><p>Como recordatorio, hacer una solicitud por correo electrónico solo te excluirá de la venta de tu información personal en donde hayas compartido tu dirección de correo electrónico. El rastreo de dispositivos y del nivel de sesión aún se aplicará debido a las limitaciones técnicas y la configuración de nuestro sistema. Para cancelar la venta de tu información personal desde este dispositivo, por favor continúa con la solicitud anterior.</p>"; },
+  "ccpa.authorization_phone_request": function(d) { return "Si no tienes un número telefónico o dirección de correo electrónico, o para hacer una petición de parte de un cliente, favor de contactar a nuestro equipo de Apoyo al Cliente: <a href='tel:877-883-9641'>877-883-9641</a>."; },
+  "ccpa.authorization_verify_with_email": function(d) { return "Quiero verificar usando mi dirección de correo electrónico."; },
+  "ccpa.authorization_verify_with_login": function(d) { return "Quiero verificar usando mi acceso a mi Pizza Profile."; },
+  "ccpa.authorization_verify_with_phone": function(d) { return "Quiero verificar usando mi número telefónico."; },
+  "ccpa.back": function(d) { return "Atrás"; },
+  "ccpa.call_us_card_body": function(d) { return "Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, non labore? Ducimus aliquid laborum esse, illo reprehenderit repudiandae aperiam, obcaecati minima quo quisquam eligendi nisi fugit soluta officia? Voluptates, perspiciatis."; },
+  "ccpa.call_us_card_phone": function(d) { return "1-800-555-3434"; },
+  "ccpa.call_us_card_title": function(d) { return "None of the above? Please call us"; },
+  "ccpa.cancel": function(d) { return "Cancelar"; },
+  "ccpa.city": function(d) { return "City of most recent purchase:"; },
+  "ccpa.city_label": function(d) { return "City:"; },
+  "ccpa.confirmation_additional_body_delete": function(d) { return "Ten en cuenta que la información que proporcionaste identificará pedidos enlazados a tu dirección de correo electrónico o número telefónico. Si alguna vez has usado otra dirección de correo electrónico o número telefónico al realizar un pedido de Domino's, deberás enviar por separado una solicitud con esa dirección de correo electrónico o ese número telefónico."; },
+  "ccpa.confirmation_additional_body_email": function(d) { return "Ten en cuenta que la información que proporcionaste identificará pedidos enlazados a tu dirección de correo electrónico. Si alguna vez has usado otra dirección de correo electrónico al realizar un pedido de Domino's, deberás enviar por separado una solicitud con esa dirección de correo electrónico."; },
+  "ccpa.confirmation_additional_body_phone": function(d) { return "Ten en cuenta que la información que proporcionaste identificará pedidos enlazados a tu número telefónico. Si alguna vez has usado otro número telefónico al realizar un pedido de Domino's, deberás enviar por separado una solicitud con ese número telefónico."; },
+  "ccpa.confirmation_body": function(d) { return "Recibirás un correo electrónico confirmando esta solicitud y deberás esperar recibir otro correo electrónico dentro de 45 días de parte de noreply@dominos.com para notificarte cuando tu información personal esté lista para verse."; },
+  "ccpa.confirmation_body_categories": function(d) { return "Recibirás un correo electrónico confirmando esta solicitud y deberás esperar recibir otro correo electrónico dentro de 45 días de parte de noreply@dominos.com para notificarte cuando tus categorías de información estén listas para verse."; },
+  "ccpa.confirmation_body_delete": function(d) { return "Recibirás un correo electrónico de confirmación cuando se haya completado tu solicitud de eliminación de información personal"; },
+  "ccpa.confirmation_body_opt_out": function(d) { return "Recibirás confirmación de esta solicitud por correo electrónico de parte de noreply@dominos.com."; },
+  "ccpa.confirmation_request_received": function(d) { return "Tu solicitud ha sido recibida."; },
+  "ccpa.contact_options_body_ask_email": function(d) { return "Provee una dirección de correo electrónico a la cual podremos notificarte cuando tu información personal esté lista para verse."; },
+  "ccpa.contact_options_body_ask_email_delete": function(d) { return "Proporciona una dirección de correo electrónico donde podamos notificarte cuando se haya eliminado tu información personal."; },
+  "ccpa.contact_options_body_opt_out": function(d) { return "Ya casi has terminado. Tenemos toda la información necesaria para enviar tu solicitud para optar por excluirte."; },
+  "ccpa.contact_options_body_profiled": function(d) { return "Casi has terminado. Tenemos toda la información que necesitamos para recolectar tu información personal."; },
+  "ccpa.contact_options_body_profiled_delete": function(d) { return "Tenemos toda la información necesaria para completar tu solicitud para eliminar tu información personal y te enviaremos un correo electrónico cuando se haya completado tu solicitud."; },
+  "ccpa.contact_options_complete_request_below": function(d) { return "Por favor completa la solicitud a continuación para eliminar tu información personal."; },
+  "ccpa.contact_options_delete_acknowledgement": function(d) { return "Entiendo que todo se eliminará permanentemente"; },
+  "ccpa.contact_options_delete_are_you_sure": function(d) { return "¿Estás seguro de que quieres eliminar tu información personal? Lo siguiente puede aplicar:"; },
+  "ccpa.contact_options_delete_item_1": function(d) { return "Se eliminará la cuenta Piece of the Pie Rewards® junto con cualquier saldo de puntos sin usar"; },
+  "ccpa.contact_options_delete_item_2": function(d) { return "Se eliminará tu Easy Order"; },
+  "ccpa.contact_options_delete_item_3": function(d) { return "Se removerán tus dispositivos Anyware vinculados"; },
+  "ccpa.contact_options_delete_request": function(d) { return "Solicitud de eliminación"; },
+  "ccpa.contact_options_disclaimer": function(d) { return "Al enviar esta solicitud, reconozco bajo pena de perjurio que soy el consumidor cuya información personal es el tema de esta solicitud."; },
+  "ccpa.contact_options_opt_out_acknowledgement": function(d) { return "Sí, estoy seguro/a que quiero optar por no vender mi información personal."; },
+  "ccpa.contact_options_request_type_delete": function(d) { return "delete personal data"; },
+  "ccpa.contact_options_request_type_view": function(d) { return "data"; },
+  "ccpa.contact_options_title": function(d) { return "How would you like to be contacted?"; },
+  "ccpa.contact_options_to_finish": function(d) { return "Tenemos toda la información necesaria para completar tu solicitud. Para terminar, por favor envía la solicitud a continuación."; },
+  "ccpa.contact_options_whats_next": function(d) { return "<h3 class=\"ccpa__sub-title\">Qué puedes esperar:</h3><ul class=\"ccpa__list\"><li>Recibirás confirmación de esta solicitud una vez que esté completa.</li><li>Notificaremos a todos los proveedores terceros con los que hemos vendido tu información.</li><li>Esta solicitud para optar por excluirse de la venta de información personal es solo válida en este dispositivo y debido a las limitaciones técnicas de nuestro sistema actual, vencerá si borras las cookies de tu dispositivo o ingresas en navegación privada. Estamos trabajando en una solución técnica que permita a clientes con un Pizza Profile optar por excluirse de todos los canales de Domino's para pedir online. Enviaremos un anuncio de esto en nuestra política de privacidad tan pronto esté disponible.</li></ul>"; },
+  "ccpa.delete_my_info": function(d) { return "Eliminar mi información"; },
+  "ccpa.description": function(d) { return "Adipisicing eu velit exercitation consequat sit consequat proident veniam pariatur adipisicing elit ea. Pariatur sint aute esse et dolore dolore id commodo adipisicing. Cupidatat reprehenderit laboris voluptate enim sint id incididunt. Elit quis fugiat dolore anim. Dolore mollit nisi consectetur laboris tempor sint deserunt consequat dolore. Nulla anim exercitation laborum labore aliqua deserunt adipisicing et veniam sit Lorem deserunt. Enim sunt exercitation esse anim quis magna qui nostrud dolor adipisicing."; },
+  "ccpa.do_not_sell_my_info": function(d) { return "No vender mi información personal"; },
+  "ccpa.dominos_homepage": function(d) { return "Página de inicio de Domino's"; },
+  "ccpa.dominos_privacy": function(d) { return "Privacidad"; },
+  "ccpa.download_data_body_text": function(d) { return "Tu información está lista para verse. Por favor solo descarga tu información personal a tu computadora o dispositivo personal."; },
+  "ccpa.download_data_cta_text": function(d) { return "Descargar tu información"; },
+  "ccpa.email": function(d) { return "Email"; },
+  "ccpa.email_address": function(d) { return "Dirección de correo electrónico"; },
+  "ccpa.email_address_confirmation": function(d) { return "Confirma tu dirección de correo electrónico"; },
+  "ccpa.email_address_last_order": function(d) { return "Dirección de correo electrónico"; },
+  "ccpa.email_card_title": function(d) { return "Don't have a Pizza Profile, but have placed an online order? Please provide your email address"; },
+  "ccpa.enter_code": function(d) { return "Ingresa el código de verificación:"; },
+  "ccpa.error_all_fields_required": function(d) { return "Todos los campos son requeridos."; },
+  "ccpa.error_authenticate": function(d) { return "¡Uy! Algo salió mal. Inténtalo de nuevo en unos minutos."; },
+  "ccpa.error_customer_login": function(d) { return "No podemos encontrar un perfil con esa combinación de email y contraseña. Asegúrate de que estás utilizando la dirección de email asociada con tu perfil de Domino's."; },
+  "ccpa.error_data_expired": function(d) { return "Tu información ha expirado."; },
+  "ccpa.error_emails_must_match": function(d) { return "Asegúrate que ambas direcciones de correo electrónico sean idénticas."; },
+  "ccpa.error_generic": function(d) { return "¡Uy! Algo salió mal. Inténtalo de nuevo en unos minutos."; },
+  "ccpa.error_invalid_code": function(d) { return "El código que ingresaste no es válido. Inténtalo de nuevo."; },
+  "ccpa.error_invalid_email": function(d) { return "Por favor ingresa una dirección de correo electrónico válida."; },
+  "ccpa.error_invalid_phone": function(d) { return "Por favor ingresa un número telefónico de 10 dígitos."; },
+  "ccpa.error_invalid_zip": function(d) { return "Por favor ingresa un código postal de 5 dígitos."; },
+  "ccpa.error_max_limit_exceeded": function(d) { return "¡Oh no! Has excedido tu número de intentos de verificación."; },
+  "ccpa.error_numbers_only": function(d) { return "Por favor ingresa un código de 6 dígitos."; },
+  "ccpa.error_phones_must_match": function(d) { return "Asegúrate que ambos números telefónicos sean idénticos."; },
+  "ccpa.error_recaptcha": function(d) { return "Por favor marca la casilla de reCAPTCHA."; },
+  "ccpa.error_service_down": function(d) { return "Bueno, esto es incómodo. El servicio temporalmente no está funcionando. Intenta de nuevo en unos minutos."; },
+  "ccpa.error_submit_request": function(d) { return "¡Uy! Algo salió mal. Inténtalo de nuevo en unos minutos."; },
+  "ccpa.error_two_factor": function(d) { return "¡Uy! Algo salió mal. Inténtalo de nuevo en unos minutos."; },
+  "ccpa.error_user_not_found": function(d) { return "No se encontró nada que coincida con la información proporcionada. Revisa que la información proporcionada en cada uno de los campos sea correcta."; },
+  "ccpa.first_name": function(d) { return "First Name:"; },
+  "ccpa.hey": function(d) { return "Hey"; },
+  "ccpa.identification_instructions_categories": function(d) { return "Necesitaremos recopilar información adicional para asegurarnos de que estamos recuperando datos que se relacionan contigo. Por favor proporciona " + d.numberOfDataPoints + " puntos de datos adicionales asociados con tu último pedido de Domino's para ver las categorías de información personal recolectada."; },
+  "ccpa.identification_instructions_delete_data": function(d) { return "Necesitaremos recopilar información adicional para asegurarnos de que estamos recuperando datos que se relacionan contigo. Por favor proporciona " + d.numberOfDataPoints + " puntos adicionales de datos asociados con tu último pedido de Domino's para verificar, identificar, y eliminar tu información personal."; },
+  "ccpa.identification_instructions_view_data": function(d) { return "Necesitaremos recopilar información adicional para asegurarnos de que estamos recuperando datos que se relacionan contigo. Por favor proporciona " + d.numberOfDataPoints + " puntos de datos adicionales asociados con tu último pedido de Domino's para ver la información personal recolectada."; },
+  "ccpa.identification_label_first_name": function(d) { return "Nombre"; },
+  "ccpa.identification_label_last_name": function(d) { return "Apellido"; },
+  "ccpa.identification_label_name": function(d) { return "Nombre completo"; },
+  "ccpa.identification_label_phone": function(d) { return "Número telefónico"; },
+  "ccpa.identification_label_zip_code": function(d) { return "Código postal de la tienda"; },
+  "ccpa.identification_option_1": function(d) { return "Option 1"; },
+  "ccpa.identification_option_2": function(d) { return "Option 2"; },
+  "ccpa.identification_option_3": function(d) { return "Option 3"; },
+  "ccpa.identification_title": function(d) { return "Please select two of the following options"; },
+  "ccpa.identification_zip_code_note": function(d) { return "Código postal de la tienda donde se realizó el pedido."; },
+  "ccpa.last_name": function(d) { return "Last Name"; },
+  "ccpa.mobile_phone": function(d) { return "Número telefónico"; },
+  "ccpa.mobile_phone_card_title": function(d) { return "Haven't placed an online order? No problem, please provide a phone number"; },
+  "ccpa.mobile_phone_confirmation": function(d) { return "Confirma tu número telefónico"; },
+  "ccpa.mobile_phone_disclaimer": function(d) { return "Se pueden aplicar tarifas para mensajes y datos. Si provees un número telefónico fijo, recibirás una llamada automatizada con un código de verificación."; },
+  "ccpa.next": function(d) { return "Siguiente"; },
+  "ccpa.no": function(d) { return ""; },
+  "ccpa.opt_out_footer_link_text": function(d) { return "Do Not Sell My Info"; },
+  "ccpa.opt_out_modal_body": function(d) { return "En Domino's, cuando usas nuestro sitio web o nuestras aplicaciones, podemos compartir tu información personal con nuestros socios de medios para identificarte y mostrarte anuncios y ofertas relevantes. Compartir tu información personal nos permite proveerte una experiencia personalizada y brindarte las más recientes ofertas en tu sesión de navegación."; },
+  "ccpa.opt_out_modal_body_are_you_sure": function(d) { return "¿Estás seguro de que quieres optar por no compartir (vender) tu información personal?"; },
+  "ccpa.opt_out_modal_no": function(d) { return "No"; },
+  "ccpa.opt_out_modal_yes": function(d) { return "Sí"; },
+  "ccpa.or": function(d) { return "Or"; },
+  "ccpa.page_title": function(d) { return "Domino's | Derechos del Consumidor"; },
+  "ccpa.password": function(d) { return "Contraseña"; },
+  "ccpa.physical_address": function(d) { return "Physical Mailing Address"; },
+  "ccpa.proceed": function(d) { return "Proceed"; },
+  "ccpa.request_delete_data": function(d) { return "Eliminar tu información personal"; },
+  "ccpa.request_view_data": function(d) { return "View Private Data"; },
+  "ccpa.request_view_data_categories": function(d) { return "Ver categorías de:<ol class=\"ccpa__list ccpa__list--ordered\"><li>Información personal que tenemos de ti</li><li>Fuentes para obtener esa información personal</li><li>Información personal que hemos compartido con terceros</li><li>Terceros con los que hemos compartido tu información personal</li></ol>"; },
+  "ccpa.request_view_private_data": function(d) { return "Ver información personal específica que se ha recolectado (recomendado)"; },
+  "ccpa.resend_code": function(d) { return "Resend Code"; },
+  "ccpa.sign_in": function(d) { return "Sign In"; },
+  "ccpa.sign_in_card_title": function(d) { return "If you have a Pizza Profile, please sign in"; },
+  "ccpa.state": function(d) { return "State:"; },
+  "ccpa.street_name": function(d) { return "Street Name:"; },
+  "ccpa.submit": function(d) { return "Submit"; },
+  "ccpa.submit_request": function(d) { return "Enviar Solicitud"; },
+  "ccpa.three": function(d) { return "tres"; },
+  "ccpa.title": function(d) { return "Ley de Privacidad del Consumidor de California"; },
+  "ccpa.two": function(d) { return "dos"; },
+  "ccpa.two_factor_phone_disclaimer": function(d) { return "No te preocupes, solo estamos usando esta dirección de correo electrónico para verificar que eres tú y no lo usaremos para ningún otro propósito."; },
+  "ccpa.two_factor_phone_disclaimer_phone": function(d) { return "No te preocupes, solo estamos usando este número para verificar que eres tú y no lo usaremos para ningún otro propósito."; },
+  "ccpa.two_factor_sent_confirmation": function(d) { return "Revisa tu correo electrónico. Enviamos un código de verificación. Puede tardar unos minutos en llegar."; },
+  "ccpa.two_factor_sent_confirmation_phone": function(d) { return "Los dispositivos móviles recibirán un mensaje de texto con un código de verificación. Los teléfonos fijos deberán esperar una llamada con un código de verificación. Puede tardar unos minutos en llegar."; },
+  "ccpa.verify": function(d) { return "Enviar Código"; },
+  "ccpa.view_categories_title": function(d) { return "View Categories of Data"; },
+  "ccpa.zip_code": function(d) { return "Zip Code:"; }
+}
+}
+);

@@ -1,0 +1,39 @@
+define([], function anonymous(
+) {
+var pluralFuncs = {
+  es: function(n, ord) {
+    if (ord) return 'other';
+    return (n == 1) ? 'one' : 'other';
+  }
+};
+var fmt = {};
+var number = function(value, offset) {
+  if (isNaN(value)) throw new Error("'" + value + "' isn't a number.");
+  return value - (offset || 0);
+};
+var plural = function(value, offset, lcfunc, data, isOrdinal) {
+  if ({}.hasOwnProperty.call(data, value)) return data[value]();
+  if (offset) value -= offset;
+  var key = lcfunc(value, isOrdinal);
+  if (key in data) return data[key]();
+  return data.other();
+};
+var select = function(value, data) {
+  if ({}.hasOwnProperty.call(data, value)) return data[value]();
+  return data.other()
+};
+
+return {
+  "easyOrder.congratulations": function(d) { return "¡Felicidades!"; },
+  "easyOrder.continue": function(d) { return "Continuar"; },
+  "easyOrder.continue_easy_order": function(d) { return "Continue to save easy order"; },
+  "easyOrder.create_easy_order": function(d) { return "CREAR TU EASY ORDER"; },
+  "easyOrder.edit_easy_order": function(d) { return "Modificar Easy Order"; },
+  "easyOrder.go_to_dominos_anyware": function(d) { return "Go to <a href=\"https://anyware.dominos.com/\" target=\"_blank\">Domino's AnyWare</a> to see all the amazing ways you can place your Easy Order."; },
+  "easyOrder.got_it_thanks": function(d) { return "Got it, thanks."; },
+  "easyOrder.save_easy_order": function(d) { return "Save Your Easy Order"; },
+  "easyOrder.you_easy_order_is_saved": function(d) { return "Tu Easy Order fue guardada"; },
+  "easyOrder.your_mobile_number_is_signed_up_for": function(d) { return "Tu número de teléfono está registrado para ordenar usando estos programa(s):"; }
+}
+}
+);

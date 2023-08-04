@@ -1,0 +1,5 @@
+define("markettemplates/footerLegal", ["handlebars.runtime"], function(Handlebars) {
+      return ({ name: "footerLegal", template: Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<p class=\"c-footer-legaltext\"> <p class=\"bold uppercase\">Suspensión indefinida de la promesa de valor 30 minutos o gratis:</p> <p> Si Domino's hace parte de tu vida este mensaje es para ti, seguimos trabajando en ser tu marca preferida entregándote siempre las mejores preparaciones y los más frescos ingredientes en tu orden, queremos informarte que nuestro servicio de 30 minutos o gratis no se encuentra activo, por tal motivo te invitamos a seguir el estado de tu orden por medio de nuestra página web o nuestra app, personaliza tu pizza y programa tu orden a domicilio o para recoger en tienda. </p> </p> ";
+},"useData":true}) })
+    });

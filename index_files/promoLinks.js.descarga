@@ -1,0 +1,24 @@
+define("markettemplates/promoLinks", ["marketconfig/dpz.lang.general", "handlebars.runtime"], function(generalStrings, Handlebars) {
+      return { name: "promoLinks", template: Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    var alias1=container.propertyIsEnumerable, alias2=container.lambda, alias3=container.escapeExpression;
+
+  return " <div class=\"footer__promo-wrapper\"> <div class=\"footer__promo\"> <img alt=\"Superintendencia de Industria y Comercio\" src=\""
+    + alias3(alias2((depth0 != null ? depth0.market_assets_ctx : depth0), depth0))
+    + "/images/img/footer-links/footerSuperintendencia.jpg\"> </div> <div class=\"footer__promo footer__promo--open-for-lunch\"> <img alt=\""
+    + alias3(helpers.t.call(
+    depth0 != null ? depth0 : (container.nullContext || {}),
+    "general.open_for_lunch",
+    {"name":"t","hash":{},"data":data},
+    generalStrings
+  ))
+    + "\" src=\""
+    + alias3(alias2((depth0 != null ? depth0.market_assets_ctx : depth0), depth0))
+    + "/images/img/footer-links/footerOpenLunch.png\"> </div> <div class=\"footer__promo\"> <img alt=\"CyberSource | A Visa Solution\" class=\"footer__logo--cybersource\" src=\""
+    + alias3(alias2((depth0 != null ? depth0.assets_ctx : depth0), depth0))
+    + "/images/payment/cybersource-a-visa-solution-tall.svg\"> </div> <div class=\"footer__promo\"> <img alt=\"Mastercard\" src=\""
+    + alias3(alias2((depth0 != null ? depth0.market_assets_ctx : depth0), depth0))
+    + "/images/img/footer-links/footerMastercard.png\"> </div> <div class=\"footer__promo\"> <img alt=\"Visa\" src=\""
+    + alias3(alias2((depth0 != null ? depth0.market_assets_ctx : depth0), depth0))
+    + "/images/img/footer-links/footerVisa.jpg\"> </div> </div> ";
+},"useData":true}) };
+    });

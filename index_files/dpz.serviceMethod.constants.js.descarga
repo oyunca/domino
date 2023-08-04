@@ -1,0 +1,1 @@
+define("dpz.serviceMethod.constants",function(){return{CARRYOUT:"Carryout",CARSIDE:"Carside",DELIVERY:"Delivery",DELIVER_TO_ME:"DeliverToMe",DINE_IN:"DineIn",DRIVE_UP_CARRYOUT:"DriveUpCarryout",DUC:"DUC",HOTSPOTS:"Hotspots",HOTSPOTS_LITE:"HotspotsLite"}});

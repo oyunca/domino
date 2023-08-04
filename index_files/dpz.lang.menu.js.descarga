@@ -1,0 +1,74 @@
+define([], function anonymous(
+) {
+var pluralFuncs = {
+  es: function(n, ord) {
+    if (ord) return 'other';
+    return (n == 1) ? 'one' : 'other';
+  }
+};
+var fmt = {};
+var number = function(value, offset) {
+  if (isNaN(value)) throw new Error("'" + value + "' isn't a number.");
+  return value - (offset || 0);
+};
+var plural = function(value, offset, lcfunc, data, isOrdinal) {
+  if ({}.hasOwnProperty.call(data, value)) return data[value]();
+  if (offset) value -= offset;
+  var key = lcfunc(value, isOrdinal);
+  if (key in data) return data[key]();
+  return data.other();
+};
+var select = function(value, data) {
+  if ({}.hasOwnProperty.call(data, value)) return data[value]();
+  return data.other()
+};
+
+return {
+  "menu.available_options": function(d) { return "Opciones Disponibles"; },
+  "menu.breads_alt": function(d) { return ""; },
+  "menu.breads_and_oven_baked_dips_alt": function(d) { return "Breads and Oven-Baked Dips"; },
+  "menu.breads_and_oven_baked_dips_title": function(d) { return "Breads & Oven-Baked Dips"; },
+  "menu.breads_and_sides_alt": function(d) { return "Breads and sides"; },
+  "menu.breads_and_sides_title": function(d) { return "Breads & Sides"; },
+  "menu.breads_title": function(d) { return ""; },
+  "menu.build_your_own_pizza_alt": function(d) { return "Crea Tu Propia Pizza"; },
+  "menu.build_your_own_pizza_title": function(d) { return "Crea Tu Propia Pizza"; },
+  "menu.chicken_alt": function(d) { return "Pollo"; },
+  "menu.chicken_title": function(d) { return "Pollo"; },
+  "menu.click_the_product_to_order_online": function(d) { return "Click the product to order online"; },
+  "menu.desserts_alt": function(d) { return "Desserts"; },
+  "menu.desserts_title": function(d) { return "Postres"; },
+  "menu.drinks_alt": function(d) { return "Bebidas"; },
+  "menu.drinks_title": function(d) { return "Bebidas"; },
+  "menu.extras_alt": function(d) { return "Extras"; },
+  "menu.extras_title": function(d) { return "Extras"; },
+  "menu.meats": function(d) { return "Con carne"; },
+  "menu.meats_meatcount": function(d) { return "Carnes (" + d.meatCount + ")"; },
+  "menu.non_meats": function(d) { return "Sin carne"; },
+  "menu.non_meats_nonmeatcount": function(d) { return "Otros (" + d.nonMeatCount + ")"; },
+  "menu.pasta_alt": function(d) { return "Pasta"; },
+  "menu.pasta_title": function(d) { return "Pasta"; },
+  "menu.pizza_alt": function(d) { return "Pizza"; },
+  "menu.pizza_crusts": function(d) { return "Masas de pizza"; },
+  "menu.pizza_crusts_crustcount": function(d) { return "Masas (" + d.crustCount + ")"; },
+  "menu.pizza_sizes": function(d) { return "Tamaños de las pizzas"; },
+  "menu.pizza_sizes_sizecount": function(d) { return "Tamaños (" + d.sizeCount + ")"; },
+  "menu.pizza_title": function(d) { return "Pizza"; },
+  "menu.pricing_available_when_ordering": function(d) { return "Precios disponibles al hacer el pedido"; },
+  "menu.salads_alt": function(d) { return "Ensaladas"; },
+  "menu.salads_title": function(d) { return "Ensaladas"; },
+  "menu.sandwiches_alt": function(d) { return "Sándwiches"; },
+  "menu.sandwiches_title": function(d) { return "Sándwiches"; },
+  "menu.sauces": function(d) { return "Salsa"; },
+  "menu.sauces_saucecount": function(d) { return "Salsas (" + d.sauceCount + ")"; },
+  "menu.see_all": function(d) { return "Ver todos"; },
+  "menu.sides": function(d) { return "Acompañamientos"; },
+  "menu.sides_sidecount": function(d) { return "Adicionales (" + d.sideCount + ")"; },
+  "menu.smallie_alt": function(d) { return "Smallie"; },
+  "menu.specialty_pizzas_alt": function(d) { return "Pizzas Especiales"; },
+  "menu.specialty_pizzas_title": function(d) { return "Pizzas Especiales"; },
+  "menu.starting_at": function(d) { return "Starting @"; },
+  "menu.the_prices_shown_are_for_the_small_size": function(d) { return ""; }
+}
+}
+);

@@ -1,0 +1,86 @@
+define([], function anonymous(
+) {
+var pluralFuncs = {
+  es: function(n, ord) {
+    if (ord) return 'other';
+    return (n == 1) ? 'one' : 'other';
+  }
+};
+var fmt = {};
+var number = function(value, offset) {
+  if (isNaN(value)) throw new Error("'" + value + "' isn't a number.");
+  return value - (offset || 0);
+};
+var plural = function(value, offset, lcfunc, data, isOrdinal) {
+  if ({}.hasOwnProperty.call(data, value)) return data[value]();
+  if (offset) value -= offset;
+  var key = lcfunc(value, isOrdinal);
+  if (key in data) return data[key]();
+  return data.other();
+};
+var select = function(value, data) {
+  if ({}.hasOwnProperty.call(data, value)) return data[value]();
+  return data.other()
+};
+
+return {
+  "errorsValidator.CNPJValidator": function(d) { return ""; },
+  "errorsValidator.CPFValidator": function(d) { return ""; },
+  "errorsValidator.CodFiscale": function(d) { return ""; },
+  "errorsValidator.PIVA": function(d) { return ""; },
+  "errorsValidator.accept": function(d) { return "Por favor introduce un valor con una extensión válida."; },
+  "errorsValidator.alphaNumeric": function(d) { return "This field only accepts numbers and letters"; },
+  "errorsValidator.ccLength": function(d) { return ""; },
+  "errorsValidator.ccValidation": function(d) { return ""; },
+  "errorsValidator.creditcard": function(d) { return "Por favor introduce un número de tarjeta de crédito válido."; },
+  "errorsValidator.cvv": function(d) { return "Please enter a valid security code."; },
+  "errorsValidator.date": function(d) { return "Por favor introduce una fecha válida."; },
+  "errorsValidator.dateISO": function(d) { return "Por favor introduce una fécha válida (formato ISO)."; },
+  "errorsValidator.datemm": function(d) { return "Formato inválido. Favor de usar MM"; },
+  "errorsValidator.dateyy": function(d) { return "Formato inválido. Favor de usar AA"; },
+  "errorsValidator.digits": function(d) { return "Por favor introduce sólo números."; },
+  "errorsValidator.dniNumber": function(d) { return ""; },
+  "errorsValidator.email": function(d) { return "Por favor, introduce una dirección e-mail válida."; },
+  "errorsValidator.emailOptIn": function(d) { return "Los datos suministrados serán utilizados para solo para este pedido y no serán almacenados en nuestras bases de datos"; },
+  "errorsValidator.equalTo": function(d) { return "Por favor introduce el mismo valor otra vez."; },
+  "errorsValidator.equalToCI": function(d) { return "Por favor introduce el mismo valor otra vez."; },
+  "errorsValidator.expirationdate": function(d) { return "La Fecha de Expiración debe ser en el futuro."; },
+  "errorsValidator.future_time": function(d) { return "Por favor selecciona un horario en el futuro"; },
+  "errorsValidator.gültigNIF": function(d) { return ""; },
+  "errorsValidator.invalid_card_holder": function(d) { return "Invalid card holder"; },
+  "errorsValidator.invalid_mobile_number": function(d) { return "Invalid mobile number"; },
+  "errorsValidator.max": function(d) { return "Por favor introduce un valor menor que o igual a " + d["1"] + "."; },
+  "errorsValidator.maxlength": function(d) { return "Por favor no introduzcas más de " + d["0"] + " caracteres."; },
+  "errorsValidator.min": function(d) { return "Por favor introduce un valor igual o mayor a " + d["1"] + "."; },
+  "errorsValidator.minlength": function(d) { return "Por favor introduce al menos " + d["0"] + " caracteres."; },
+  "errorsValidator.moreThanOrderAmount": function(d) { return "Amount entered must be greater than order amout"; },
+  "errorsValidator.nameContainsAlpha": function(d) { return "Valid name required"; },
+  "errorsValidator.nitNumber": function(d) { return ""; },
+  "errorsValidator.number": function(d) { return "Por favor introduce un número válido."; },
+  "errorsValidator.oibError": function(d) { return "Please enter a valid OIB Code"; },
+  "errorsValidator.passportValidation": function(d) { return "Por favor introduzca un pasaporte válido."; },
+  "errorsValidator.phone": function(d) { return "Por favor introduce un número de teléfono válido."; },
+  "errorsValidator.postalcode": function(d) { return "Por favor introduce un código postal válido."; },
+  "errorsValidator.qitaf_code_request": function(d) { return ""; },
+  "errorsValidator.qitaf_max_amount": function(d) { return ""; },
+  "errorsValidator.qitaf_otp_request": function(d) { return ""; },
+  "errorsValidator.qitaf_otp_required": function(d) { return ""; },
+  "errorsValidator.qitaf_phone_required": function(d) { return ""; },
+  "errorsValidator.range": function(d) { return "Por favor introduce un valor entre " + d["1"] + " y " + d["2"] + "."; },
+  "errorsValidator.rangelength": function(d) { return "Por favor introduce un valor entre " + d["1"] + " y " + d["2"] + " caracteres."; },
+  "errorsValidator.remote": function(d) { return "Por favor arregla este campo."; },
+  "errorsValidator.required": function(d) { return "Campo obligatorio."; },
+  "errorsValidator.requiredCharacters": function(d) { return "El valor debe tener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial."; },
+  "errorsValidator.rncNumber": function(d) { return "RNC number is invalid. Enter a valid 9 or 11 digit number."; },
+  "errorsValidator.rtnNumber": function(d) { return ""; },
+  "errorsValidator.rucNumber": function(d) { return ""; },
+  "errorsValidator.rucValidation": function(d) { return ""; },
+  "errorsValidator.sadad_OLP_valid": function(d) { return ""; },
+  "errorsValidator.streetNumber": function(d) { return "Please enter a valid street number"; },
+  "errorsValidator.uniqueAddress": function(d) { return "Ese nombre está en uso."; },
+  "errorsValidator.uniqueCard": function(d) { return "Ese nombre está en uso."; },
+  "errorsValidator.url": function(d) { return "Por favor introduce un URL válido."; },
+  "errorsValidator.validNIF": function(d) { return ""; }
+}
+}
+);

@@ -1,0 +1,108 @@
+define("markettemplates/homePage", [
+    "marketconfig/dpz.lang.entrees",
+    "marketconfig/dpz.lang.general",
+    "marketconfig/dpz.lang.navigation",
+    "handlebars.runtime",
+    "dpz.template",
+    "dpz.layout",
+    "markettemplates/callCenterBanner",
+    "markettemplates/homePagePromoFilter"
+], function(
+    entreesStrings,
+    generalStrings,
+    navigationStrings,
+    Handlebars,
+    dpzTemplate,
+    dpzLayout
+) {
+    for (var _len = arguments.length, partials = new Array(_len > 6 ? _len - 6 : 0), _key = 6; _key < _len; _key++) {
+      partials[_key - 6] = arguments[_key];
+    }
+    dpzTemplate.set(partials.map(function (partial) {
+      var name = partial.name;
+      var template = partial.template;
+      return {
+        name: name,
+        template: dpzLayout.create(template)
+      };
+    }));
+    return { name: "homePage", template: Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+  var stack1, alias1=container.propertyIsEnumerable, alias2=container.lambda, alias3=container.escapeExpression;
+
+return " <li class=\"grid__cell--1 js-mobileNav"
+  + alias3(alias2((data && data.index), depth0))
+  + "\"> <a href=\""
+  + alias3(helpers.makeLink.call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? depth0.url : depth0),{"name":"makeLink","hash":{},"data":data}))
+  + "\" class=\"btn btn--block js-responsiveBtnWt btn--block--flatstyle "
+  + alias3(alias2((depth0 != null ? depth0.anchorClass : depth0), depth0))
+  + "\"> "
+  + ((stack1 = alias2((depth0 != null ? depth0.text : depth0), depth0)) != null ? stack1 : "")
+  + " </a> </li> ";
+},"3":function(container,depth0,helpers,partials,data) {
+  var stack1, alias1=container.propertyIsEnumerable, alias2=depth0 != null ? depth0 : (container.nullContext || {}), alias3=container.escapeExpression, alias4=container.lambda;
+
+return " <li class=\"grid__cell--1\"> <a "
+  + ((stack1 = helpers["if"].call(alias2,(depth0 != null ? depth0.dataQuid : depth0),{"name":"if","hash":{},"fn":container.program(4, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+  + " href=\""
+  + alias3(helpers.makeLink.call(alias2,(depth0 != null ? depth0.url : depth0),{"name":"makeLink","hash":{},"data":data}))
+  + "\" class=\"btn btn--block c-site-nav-main-link-"
+  + alias3(alias4((data && data.index), depth0))
+  + "-mobile js-responsiveBtnWt btn--block--flatstyle "
+  + alias3(alias4((depth0 != null ? depth0.anchorClass : depth0), depth0))
+  + "\"> "
+  + ((stack1 = alias4((depth0 != null ? depth0.text : depth0), depth0)) != null ? stack1 : "")
+  + " </a> </li> ";
+},"4":function(container,depth0,helpers,partials,data) {
+  return " data-quid=\""
+  + container.escapeExpression(container.lambda((depth0 != null ? depth0.dataQuid : depth0), depth0))
+  + "\" ";
+},"6":function(container,depth0,helpers,partials,data) {
+  return " <section role=\"region\" class=\"home-section home-section--menu block--aspect-ratio promo home-section--mobile-menu is-hidden@desktop\" data-image-type=\"side\"> <div class=\"block block14 is-hidden@desktop\" data-number=\"14\" data-image-type=\"side\" data-quid=\"block14\"></div> </section> ";
+},"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+  var stack1, alias1=container.propertyIsEnumerable, alias2=depth0 != null ? depth0 : (container.nullContext || {}), alias3=container.lambda, alias4=container.escapeExpression;
+
+return " <div class=\"header--homepage card--flat is-hidden@desktop\"> <div class=\"media media--store-notification js-store-notification is-hidden\"> <p class=\"media media--store-notification__text\">"
+  + ((stack1 = helpers.t.call(
+    alias2,
+    "entrees.store_selected",
+    {"name":"t","hash":{},"data":data},
+    entreesStrings
+)) != null ? stack1 : "")
+  + "</p> <p class=\"media media--store-notification__text media--store-notification__text--right\"><a href=\""
+  + alias4(alias3((depth0 != null ? depth0.storeResultsURL : depth0), depth0))
+  + "\" class=\"media--store-notification__text--link\">"
+  + alias4(helpers.t.call(
+    alias2,
+    "entrees.change_store",
+    {"name":"t","hash":{},"data":data},
+    entreesStrings
+))
+  + "</a></p> </div> <h1 class=\"welcome-title js-welcome-title\">"
+  + alias4(helpers.t.call(
+    alias2,
+    "general.welcome_to_dominos",
+    {"name":"t","hash":{},"data":data},
+    generalStrings
+))
+  + "</h1> <div class=\"direction-phone is-hidden@desktop\"> "
+  + alias4(helpers.prt.call(alias2,"callCenterBanner",{"name":"prt","hash":{},"data":data}))
+  + " </div> <ul class=\"nav--buttons grid js-navButtonsTop\"> "
+  + ((stack1 = helpers.each.call(alias2,(depth0 != null ? depth0.mobileNavTop : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+  + " </ul> </div> <section role=\"region\" class=\"home-section home-section--start-order home-section--start-order-desktop js-smartOrder is-hidden is-visible@desktop\"></section> <section role=\"region\" class=\"js-orderSettings is-hidden@handheld\"></section> <div role=\"main\" id=\"homePage\" class=\"grid home-touts\" data-dpz-track-group=\"coupons-banners\"> <div class=\"start-your-order--handheld start-your-order--handheld-profile grid__cell--1 is-hidden@desktop\" data-quid=\"start-your-order-top\"> <div id=\"startYourOrderHandheldProfile\" class=\"js-startYourOrderHandheldTop\"> <!-- --> </div> </div> <div class=\"grid__cell--1 home-touts__main\" id=\"sectionMain\"> <div id=\"orderHistoryContainer\" class=\"is-hidden js-orderHistoryContainer order-history-container\"> <div id=\"orderHistory\" class=\"js-orderHistory order-history\"></div> <div id=\"localStore\" class=\"js-localStore is-hidden\">"
+  + alias4(alias3((depth0 != null ? depth0.localStore : depth0), depth0))
+  + "</div> </div> <div class=\"block block0\" data-number=\"0\" data-image-type=\"hero\" data-quid=\"block0\"></div> </div> <aside id=\"asideMain\" class=\"grid__cell--1 home-touts__aside \"> "
+  + alias4(helpers.prt.call(alias2,"homePagePromoFilter",{"name":"prt","hash":{},"data":data}))
+  + " <div class=\"block block1\" data-number=\"1\" data-image-type=\"side\" data-quid=\"block1\"></div> <div class=\"block block2\" data-number=\"2\" data-image-type=\"side\" data-quid=\"block2\"></div> <div class=\"block block3\" data-number=\"3\" data-image-type=\"side\" data-quid=\"block3\"></div> <div class=\"block block4\" data-number=\"4\" data-image-type=\"side\" data-quid=\"block4\"></div> <div class=\"block block5\" data-number=\"5\" data-image-type=\"side\" data-quid=\"block5\"></div> <div class=\"block block6\" data-number=\"6\" data-image-type=\"side\" data-quid=\"block6\"></div> </aside> <footer id=\"footerMain\" class=\"grid__cell home-touts__bottom js-home-touts__bottom is-hidden\"> <div class=\"block block7\" data-number=\"7\" data-image-type=\"footer\"></div> <div class=\"block block8 is-hidden\" data-number=\"8\" data-image-type=\"footer\"></div> <div class=\"block block9 is-hidden\" data-number=\"9\" data-image-type=\"footer\"></div> <div class=\"js-deliveryTimeOrder\" data-number=\"10\"></div> <div class=\"block block11 is-hidden\" data-number=\"11\" data-image-type=\"footer\"></div> <ul class=\"nav--buttons grid is-hidden@desktop js-navButtonsBottom\"> "
+  + ((stack1 = helpers.each.call(alias2,(depth0 != null ? depth0.mobileNavBottom : depth0),{"name":"each","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+  + " </ul> </footer> "
+  + ((stack1 = helpers.unless.call(alias2,(depth0 != null ? depth0.isWAMCampaign : depth0),{"name":"unless","hash":{},"fn":container.program(6, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+  + " <div class=\"start-your-order--handheld grid start-your-order--bottom is-hidden@desktop\" data-quid=\"start-your-order-bottom\"> <div id=\"startYourOrderHandheldGuest\" class=\"js-startYourOrderHandheldBottom grid__cell--1\"> <!-- --> </div> </div> </div> <div class=\"kiosk-privacy-link is-hidden is-visible@kiosk\"><a class=\"js-isTemplatePopup buttonType3\" data-template-popup=\"contentPagePrivacy\" href=\"#\">"
+  + alias4(helpers.t.call(
+    alias2,
+    "navigation.privacy_policy",
+    {"name":"t","hash":{},"data":data},
+    navigationStrings
+))
+  + "</a></div>";
+},"useData":true}) };
+});
